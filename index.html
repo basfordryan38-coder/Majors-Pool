@@ -845,6 +845,7 @@ border-radius: 3px;
   </div>
 
   <div id="pick-builder" style="display:none;">
+  <div id="pick-lock-msg"></div>
     <div class="budget-meter">
       <div>
         <div class="budget-label">Points Remaining</div>
@@ -1052,6 +1053,18 @@ border-radius: 3px;
     <div id="score-msg"></div>
   </div>
 
+  <!-- Pick Deadlines -->
+
+  <div class="card comm-section">
+    <h3>Pick Deadlines</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">
+      Picks lock automatically at the default tee time. Override any deadline below to set a custom cutoff. Leave blank to use the default.
+    </div>
+    <div id="deadline-rows"></div>
+    <button class="action-btn" style="margin-top:12px;" onclick="saveDeadlines()">Save Deadlines</button>
+    <div id="deadline-msg"></div>
+  </div>
+
   <!-- Reset -->
 
   <div class="card comm-section">
@@ -1074,10 +1087,10 @@ border-radius: 3px;
 //  STATE
 // ══════════════════════════════════════════
 const MAJORS = [
-  { id: 'masters', label: 'The Masters' },
-  { id: 'pga',     label: 'PGA Championship' },
-  { id: 'usopen',  label: 'U.S. Open' },
-  { id: 'open',    label: 'The Open Championship' },
+  { id: 'masters', label: 'The Masters',        defaultDeadline: '2026-04-09T08:00:00-04:00' },
+  { id: 'pga',     label: 'PGA Championship',   defaultDeadline: '2026-05-14T08:00:00-04:00' },
+  { id: 'usopen',  label: 'U.S. Open',          defaultDeadline: '2026-06-18T08:00:00-04:00' },
+  { id: 'open',    label: 'The Open Championship', defaultDeadline: '2026-07-16T06:35:00+01:00' },
 ];
 
 const COST_TIERS = [
@@ -1091,6 +1104,70 @@ const COST_TIERS = [
 function getCost(rank) {
   for (const t of COST_TIERS) if (rank <= t.max) return t.cost;
   return 1;
+}
+
+// ── DEADLINE HELPERS ──
+function getDeadline(majorId) {
+  const major = MAJORS.find(m => m.id === majorId);
+  const override = state.deadlines?.[majorId];
+  if (override) return new Date(override);
+  return new Date(major.defaultDeadline);
+}
+
+function isLocked(majorId) {
+  return new Date() >= getDeadline(majorId);
+}
+
+function formatDeadline(majorId) {
+  const d = getDeadline(majorId);
+  return d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+}
+
+function renderDeadlineRows() {
+  const container = document.getElementById('deadline-rows');
+  if (!container) return;
+  container.innerHTML = MAJORS.map(m => {
+    const locked = isLocked(m.id);
+    const override = state.deadlines?.[m.id] || '';
+    // Convert stored ISO to local datetime-local format for input
+    let inputVal = '';
+    if (override) {
+      const d = new Date(override);
+      const pad = n => String(n).padStart(2, '0');
+      inputVal = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    return `<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <div>
+        <div style="font-size:0.88rem;color:#f0f0f0;">${m.label}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-top:2px;">
+          Default: ${formatDeadline(m.id)} ${locked ? '· <span style="color:#e05444;">LOCKED</span>' : '· <span style="color:#4caf50;">OPEN</span>'}
+        </div>
+      </div>
+      <input type="datetime-local" class="form-input" id="deadline-${m.id}" value="${inputVal}" style="max-width:200px;font-family:'DM Mono',monospace;font-size:0.72rem;">
+      <button class="action-btn danger" style="font-size:0.62rem;" onclick="clearDeadlineOverride('${m.id}')">Clear</button>
+    </div>`;
+  }).join('');
+}
+
+function clearDeadlineOverride(majorId) {
+  if (!state.deadlines) state.deadlines = {};
+  delete state.deadlines[majorId];
+  saveState();
+  renderDeadlineRows();
+}
+
+function saveDeadlines() {
+  if (!state.deadlines) state.deadlines = {};
+  MAJORS.forEach(m => {
+    const input = document.getElementById(`deadline-${m.id}`);
+    if (input && input.value) {
+      state.deadlines[m.id] = new Date(input.value).toISOString();
+    }
+  });
+  saveState();
+  renderDeadlineRows();
+  document.getElementById('deadline-msg').innerHTML = '<div class="msg success">Deadlines saved ✓</div>';
+  setTimeout(() => document.getElementById('deadline-msg').innerHTML = '', 2500);
 }
 
 // ══════════════════════════════════════════
@@ -1141,6 +1218,7 @@ function defaultState() {
     picks:   { masters: {}, pga: {}, usopen: {}, open: {} },
     scores:  { masters: {}, pga: {}, usopen: {}, open: {} },
     worstRounds: { masters: {}, pga: {}, usopen: {}, open: {} },
+    deadlines: {},
   };
 }
 
@@ -1236,7 +1314,7 @@ function showPage(id) {
   if (id === 'leaderboard') renderLeaderboard();
   if (id === 'teams') renderTeams();
   if (id === 'picks') initPickSelectors();
-  if (id === 'commissioner') { renderPlayerTags(); renderRosterList(); renderScoreEntry(); }
+  if (id === 'commissioner') { renderPlayerTags(); renderRosterList(); renderScoreEntry(); renderDeadlineRows(); }
 }
 
 // ══════════════════════════════════════════
@@ -1416,9 +1494,22 @@ function onPickSelectionChange() {
   pickPlayer = document.getElementById('pick-player-select').value;
   pickMajor  = document.getElementById('pick-major-select').value;
   if (pickPlayer && pickMajor) {
+    // Check if locked
+    if (isLocked(pickMajor)) {
+      document.getElementById('pick-builder').style.display = 'none';
+      document.getElementById('pick-lock-msg').innerHTML = `
+        <div style="text-align:center;padding:32px;background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.3);border-radius:4px;margin-top:16px;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#e05444;margin-bottom:8px;">⛳ Picks Are Locked</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(224,84,68,0.7);">
+            The deadline for ${MAJORS.find(m=>m.id===pickMajor).label} has passed.<br>
+            Locked at: ${formatDeadline(pickMajor)}
+          </div>
+        </div>`;
+      return;
+    }
+    document.getElementById('pick-lock-msg').innerHTML = '';
     selectedGolfers = [];
     selectedAmateur = null;
-    // pre-load existing picks
     const existing = state.picks[pickMajor]?.[pickPlayer];
     if (existing) {
       selectedGolfers = [...(existing.golfers || [])];
@@ -1431,6 +1522,7 @@ function onPickSelectionChange() {
     updateBudget();
   } else {
     document.getElementById('pick-builder').style.display = 'none';
+    document.getElementById('pick-lock-msg').innerHTML = '';
   }
 }
 
@@ -1870,6 +1962,7 @@ function resetAll() {
   await loadState();
   buildMajorSelector('lb-major-selector', activeLbMajor, 'setLbMajor');
   renderLeaderboard();
+  renderDeadlineRows();
   startLiveSync();
 })();
 </script>
