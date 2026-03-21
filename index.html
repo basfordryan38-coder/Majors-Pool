@@ -1047,7 +1047,10 @@ border-radius: 3px;
         <option value="usopen">U.S. Open</option>
         <option value="open">The Open Championship</option>
       </select>
+      <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="syncLiveScores()">⛳ Sync Live Scores</button>
     </div>
+    <div id="sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-bottom:12px;"></div>
+    <div id="unmatched-container"></div>
     <div id="score-entry-container"></div>
     <button class="action-btn" style="margin-top:12px;" onclick="saveScores()">Save Scores</button>
     <div id="score-msg"></div>
@@ -1852,8 +1855,132 @@ function renderRosterList() {
 }
 
 // ══════════════════════════════════════════
-//  COMMISSIONER — SCORES
+//  LIVE SCORE SYNC
 // ══════════════════════════════════════════
+const WORKER_URL = 'https://golf-scores-proxy.basford-ryan38.workers.dev';
+
+function cleanName(name) {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove accents
+    .replace(/[^a-z\s]/g, '')        // remove non-alpha
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function nameSimilarity(a, b) {
+  const ca = cleanName(a);
+  const cb = cleanName(b);
+  if (ca === cb) return 1;
+  // Check if last name matches
+  const aParts = ca.split(' ');
+  const bParts = cb.split(' ');
+  const aLast = aParts[aParts.length - 1];
+  const bLast = bParts[bParts.length - 1];
+  if (aLast === bLast) return 0.9;
+  // Check if first + last match with middle name difference
+  if (aParts[0] === bParts[0] && aLast === bLast) return 1;
+  // Partial match — one name contains the other
+  if (ca.includes(cb) || cb.includes(ca)) return 0.8;
+  return 0;
+}
+
+function calcTotalScore(rounds) {
+  let total = 0;
+  for (const r of rounds) {
+    if (!r.score || r.score === '-' || r.score === '') continue;
+    if (r.score === 'E') continue;
+    const n = parseInt(r.score);
+    if (!isNaN(n)) total += n;
+  }
+  return total;
+}
+
+async function syncLiveScores() {
+  const major = document.getElementById('score-major-select').value;
+  const statusEl = document.getElementById('sync-status');
+  const unmatchedEl = document.getElementById('unmatched-container');
+
+  statusEl.innerHTML = '<span style="color:rgba(240,201,74,0.7);">⟳ Fetching live scores…</span>';
+  unmatchedEl.innerHTML = '';
+
+  try {
+    const res = await fetch(WORKER_URL);
+    const data = await res.json();
+
+    if (data.error) {
+      statusEl.innerHTML = `<span style="color:#e05444;">✗ ${data.error}</span>`;
+      return;
+    }
+
+    const leaderboard = data.leaderboard || [];
+    const picks = state.picks[major] || {};
+
+    // Get all golfer names that someone picked
+    const pickedNames = new Set();
+    Object.values(picks).forEach(d => {
+      (d.golfers || []).forEach(g => pickedNames.add(g.name));
+      if (d.amateur) pickedNames.add(d.amateur.name);
+    });
+
+    let matched = 0;
+    let unmatched = [];
+
+    pickedNames.forEach(pickedName => {
+      // Find best match in leaderboard
+      let bestMatch = null;
+      let bestScore = 0;
+
+      leaderboard.forEach(player => {
+        const sim = nameSimilarity(pickedName, player.name);
+        if (sim > bestScore) {
+          bestScore = sim;
+          bestMatch = player;
+        }
+      });
+
+      if (bestMatch && bestScore >= 0.8) {
+        const total = calcTotalScore(bestMatch.rounds);
+        state.scores[major][pickedName] = total;
+
+        // Auto-mark cut status
+        const isCut = bestMatch.status === 'cut' ||
+          (bestMatch.rounds.length <= 2 && leaderboard.some(p =>
+            nameSimilarity(p.name, pickedName) >= 0.8 &&
+            p.rounds.length > 2
+          ));
+
+        Object.values(picks).forEach(d => {
+          const g = (d.golfers || []).find(x => x.name === pickedName);
+          if (g && isCut) g.cut = true;
+          if (d.amateur?.name === pickedName && isCut) d.amateur.cut = true;
+        });
+
+        matched++;
+      } else {
+        unmatched.push(pickedName);
+      }
+    });
+
+    await saveState();
+    renderScoreEntry();
+    renderLeaderboard();
+
+    statusEl.innerHTML = `<span style="color:#4caf50;">✓ Synced ${matched} golfer${matched !== 1 ? 's' : ''} from ${data.tournament}</span>`;
+
+    if (unmatched.length) {
+      unmatchedEl.innerHTML = `
+        <div style="background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.25);border-radius:3px;padding:12px;margin-bottom:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#e05444;margin-bottom:8px;letter-spacing:0.1em;text-transform:uppercase;">Could not match — enter manually:</div>
+          ${unmatched.map(n => `<div style="font-size:0.85rem;color:#f0f0f0;padding:2px 0;">• ${n}</div>`).join('')}
+        </div>`;
+    }
+
+  } catch(err) {
+    statusEl.innerHTML = `<span style="color:#e05444;">✗ Sync failed: ${err.message}</span>`;
+  }
+}
 function renderScoreEntry() {
   const major = document.getElementById('score-major-select').value;
   const golfers = state.golfers[major];
