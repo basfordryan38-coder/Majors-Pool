@@ -41,115 +41,51 @@ repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0
 repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
 }
 
-/* ── HEADER ── */
-header {
-text-align: center;
-padding: 48px 24px 32px;
-position: relative;
-border-bottom: 1px solid rgba(240,201,74,0.3);
-}
-
+header { text-align: center; padding: 48px 24px 32px; position: relative; border-bottom: 1px solid rgba(240,201,74,0.3); }
 .flag-pin { width: 3px; height: 32px; background: #f0c94a; position: relative; border-radius: 2px; }
 .flag-pin::before { content: ‘’; position: absolute; top: 0; left: 3px; width: 14px; height: 10px; background: #f0c94a; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+h1 { font-family: ‘Playfair Display’, serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; color: #f0c94a !important; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 2px 20px rgba(240,201,74,0.4); }
+.subtitle { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.25em; color: rgba(240,201,74,0.7); text-transform: uppercase; margin-top: 8px; }
 
-h1 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(2.2rem, 6vw, 4rem);
-font-weight: 900;
-color: #f0c94a !important;
-letter-spacing: -0.02em;
-line-height: 1;
-text-shadow: 0 2px 20px rgba(240,201,74,0.4);
-}
-
-.subtitle {
-font-family: ‘DM Mono’, monospace;
-font-size: 0.72rem;
-letter-spacing: 0.25em;
-color: rgba(240,201,74,0.7);
-text-transform: uppercase;
-margin-top: 8px;
-}
-
-/* ── NAV TABS ── */
 nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; flex-wrap: wrap; }
-
-.tab-btn {
-font-family: ‘DM Mono’, monospace;
-font-size: 0.72rem;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-padding: 10px 20px;
-border: 1px solid rgba(240,201,74,0.4);
-background: transparent;
-color: #f0c94a;
-cursor: pointer;
-border-radius: 2px;
-transition: all 0.2s;
-}
-
+.tab-btn { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(240,201,74,0.4); background: transparent; color: #f0c94a; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
 .tab-btn:hover { border-color: #f0c94a; color: #f7dc7a; background: rgba(240,201,74,0.08); }
 .tab-btn.active { background: #f0c94a; color: #0f1f0f; border-color: #f0c94a; font-weight: 500; }
 
-/* ── PAGES ── */
 .page { display: none; padding: 32px 16px 64px; max-width: 960px; margin: 0 auto; animation: fadeIn 0.3s ease; }
 .page.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── SECTION HEADERS ── */
 .section-title { font-family: ‘Playfair Display’, serif; font-size: 1.6rem; color: #f0c94a !important; margin-bottom: 6px; }
 .section-sub { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,201,74,0.6); margin-bottom: 24px; }
 
-/* ── CARDS ── */
 .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(240,201,74,0.2); border-radius: 4px; padding: 24px; margin-bottom: 16px; }
-.card-title { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; color: var(–gold-light); margin-bottom: 4px; }
 
-/* ── LEADERBOARD ── */
 .leaderboard-major-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-
-.major-btn {
-font-family: ‘DM Mono’, monospace;
-font-size: 0.68rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-padding: 8px 16px;
-border: 1px solid rgba(201,168,76,0.25);
-background: transparent;
-color: rgba(201,168,76,0.55);
-cursor: pointer;
-border-radius: 2px;
-transition: all 0.2s;
-}
-
+.major-btn { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; border: 1px solid rgba(201,168,76,0.25); background: transparent; color: rgba(201,168,76,0.55); cursor: pointer; border-radius: 2px; transition: all 0.2s; }
 .major-btn.active { background: rgba(201,168,76,0.12); border-color: var(–gold); color: var(–gold); }
 
 .lb-table { width: 100%; border-collapse: collapse; }
 .lb-table th { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
 .lb-table td { padding: 14px 12px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
 .lb-table tr:hover td { background: rgba(201,168,76,0.04); }
-
 .rank-num { font-family: ‘Playfair Display’, serif; font-size: 1.4rem; color: rgba(201,168,76,0.3); font-weight: 700; line-height: 1; }
 .rank-1 .rank-num { color: var(–gold); }
 .rank-2 .rank-num { color: rgba(201,168,76,0.7); }
 .rank-3 .rank-num { color: rgba(201,168,76,0.5); }
-
 .player-name-lb { font-family: ‘Playfair Display’, serif; font-size: 1rem; color: #ffffff; }
-
 .golfer-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 .gtag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; padding: 2px 6px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); letter-spacing: 0.05em; }
 .gtag.cut { background: rgba(192,57,43,0.15); color: rgba(192,57,43,0.8); }
 .gtag.amateur { background: rgba(36,113,163,0.2); color: rgba(100,180,220,0.9); }
-
 .score-cell { font-family: ‘DM Mono’, monospace; font-size: 1.1rem; font-weight: 500; text-align: right; }
 .score-under { color: #e74c3c; }
 .score-over { color: var(–cream); }
 .score-even { color: rgba(201,168,76,0.8); }
 .score-pending { font-family: ‘DM Mono’, monospace; font-size: 0.7rem; color: rgba(201,168,76,0.35); letter-spacing: 0.1em; }
 
-/* ── TEAM BUILDER ── */
 .builder-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 640px) { .builder-layout { grid-template-columns: 1fr; } }
-
 .budget-meter { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
 .budget-label { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.55); }
 .budget-val { font-family: ‘Playfair Display’, serif; font-size: 1.8rem; color: var(–gold); line-height: 1; }
@@ -157,38 +93,31 @@ transition: all 0.2s;
 .budget-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
 .budget-fill { height: 100%; background: linear-gradient(90deg, var(–green-light), var(–gold)); border-radius: 2px; transition: width 0.3s ease; }
 .budget-fill.danger { background: linear-gradient(90deg, #c0392b, #e74c3c); }
-
 .golfer-list { display: flex; flex-direction: column; gap: 6px; max-height: 480px; overflow-y: auto; padding-right: 4px; }
 .golfer-list::-webkit-scrollbar { width: 3px; }
 .golfer-list::-webkit-scrollbar-track { background: transparent; }
 .golfer-list::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
-
 .golfer-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid rgba(201,168,76,0.1); border-radius: 3px; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.02); }
 .golfer-row:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.05); }
 .golfer-row.selected { border-color: var(–gold); background: rgba(201,168,76,0.1); }
 .golfer-row.disabled { opacity: 0.35; cursor: not-allowed; }
 .golfer-row-name { font-size: 0.9rem; color: var(–cream); }
 .golfer-row-rank { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); margin-top: 2px; }
-
 .cost-badge { font-family: ‘DM Mono’, monospace; font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 2px; background: rgba(201,168,76,0.15); color: var(–gold-light); min-width: 32px; text-align: center; }
 .cost-badge.c5 { background: rgba(201,168,76,0.25); }
 .cost-badge.c1 { background: rgba(255,255,255,0.06); color: rgba(201,168,76,0.5); }
-
 .team-slot { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px dashed rgba(201,168,76,0.2); border-radius: 3px; margin-bottom: 8px; min-height: 52px; transition: all 0.2s; }
 .team-slot.filled { border-style: solid; border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.06); }
 .team-slot.amateur-slot { border-color: rgba(36,113,163,0.35); }
 .team-slot.amateur-slot.filled { background: rgba(36,113,163,0.08); border-color: rgba(36,113,163,0.5); }
 .slot-name { font-size: 0.9rem; color: var(–cream); }
 .slot-empty { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
-
 .remove-btn { background: transparent; border: none; color: rgba(192,57,43,0.6); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 2px; transition: color 0.15s; }
 .remove-btn:hover { color: var(–red); }
-
 .submit-btn { width: 100%; padding: 14px; background: var(–gold); color: var(–green-deep); border: none; font-family: ‘DM Mono’, monospace; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; cursor: pointer; border-radius: 3px; margin-top: 12px; transition: all 0.2s; }
 .submit-btn:hover { background: var(–gold-light); transform: translateY(-1px); }
 .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-/* ── TEAMS VIEW ── */
 .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .team-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 20px; transition: border-color 0.2s; }
 .team-card:hover { border-color: rgba(201,168,76,0.3); }
@@ -199,42 +128,33 @@ transition: all 0.2s;
 .tgi-name { color: var(–cream); }
 .tgi-score { font-family: ‘DM Mono’, monospace; font-size: 0.8rem; }
 
-/* ── RULES PAGE ── */
 .rules-section { margin-bottom: 32px; }
 .rules-section h3 { font-family: ‘Playfair Display’, serif; font-size: 1.2rem; color: var(–gold); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(201,168,76,0.15); }
 .rules-section p, .rules-section li { font-size: 0.9rem; line-height: 1.7; color: rgba(245,240,232,0.8); margin-bottom: 8px; }
 .rules-section ul { padding-left: 20px; }
-
 .cost-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
 .cost-table th { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
 .cost-table td { padding: 10px 12px; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(245,240,232,0.8); }
 .cost-table td:last-child { font-family: ‘DM Mono’, monospace; color: var(–gold); }
 
-/* ── COMMISSIONER ── */
 .comm-section { margin-bottom: 28px; }
 .comm-section h3 { font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 12px; }
-
 .form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
 .form-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.2); color: var(–cream); padding: 10px 14px; font-family: ‘DM Sans’, sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; transition: border-color 0.2s; }
 .form-input:focus { outline: none; border-color: var(–gold); }
 .form-input::placeholder { color: rgba(201,168,76,0.25); }
-
 .form-select { background: rgba(30,50,30,0.9); border: 1px solid rgba(201,168,76,0.2); color: var(–cream); padding: 10px 14px; font-family: ‘DM Sans’, sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; }
-
 .action-btn { padding: 10px 18px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(–gold); font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: all 0.15s; white-space: nowrap; }
 .action-btn:hover { background: rgba(201,168,76,0.25); }
 .action-btn.danger { border-color: rgba(192,57,43,0.4); color: rgba(192,57,43,0.8); background: rgba(192,57,43,0.08); }
 .action-btn.danger:hover { background: rgba(192,57,43,0.15); }
-
 .msg { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; padding: 8px 12px; border-radius: 3px; margin-top: 8px; }
 .msg.success { background: rgba(46,125,50,0.2); border: 1px solid rgba(46,125,50,0.4); color: #81c784; }
 .msg.error { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e57373; }
-
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .removable-tag { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; padding: 4px 10px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); border: 1px solid rgba(201,168,76,0.2); cursor: pointer; transition: all 0.15s; }
 .removable-tag:hover { background: rgba(192,57,43,0.15); color: #e57373; border-color: rgba(192,57,43,0.3); }
 
-/* ── SCORE INPUT ── */
 .score-row { display: grid; grid-template-columns: 1fr repeat(4, 60px); gap: 6px; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .score-row-name { font-size: 0.88rem; color: var(–cream); }
 .score-tiny { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.15); color: var(–cream); padding: 6px; font-family: ‘DM Mono’, monospace; font-size: 0.8rem; text-align: center; border-radius: 3px; }
@@ -243,18 +163,29 @@ transition: all 0.2s;
 .cut-toggle { display: flex; align-items: center; gap: 6px; font-family: ‘DM Mono’, monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); cursor: pointer; }
 .cut-toggle input { accent-color: var(–red); }
 
-/* ── MISC ── */
-.divider { border: none; border-top: 1px solid rgba(201,168,76,0.12); margin: 28px 0; }
 .empty-state { text-align: center; padding: 48px 24px; font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
 .badge-amateur { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; padding: 2px 6px; background: rgba(36,113,163,0.2); color: rgba(100,180,220,0.8); border-radius: 2px; margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
-
 .filter-row { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
 .filter-btn { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.2); background: transparent; color: rgba(201,168,76,0.45); cursor: pointer; border-radius: 2px; transition: all 0.15s; }
 .filter-btn.active { border-color: var(–gold); color: var(–gold); background: rgba(201,168,76,0.08); }
-
 .search-input { flex: 1; min-width: 140px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.15); color: var(–cream); padding: 6px 12px; font-family: ‘DM Sans’, sans-serif; font-size: 0.82rem; border-radius: 3px; }
 .search-input:focus { outline: none; border-color: rgba(201,168,76,0.5); }
 .search-input::placeholder { color: rgba(201,168,76,0.2); }
+
+/* ── SYNC DIALOG ── */
+.dialog-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.dialog-box { background: #1a3018; border: 1px solid rgba(240,201,74,0.4); border-radius: 6px; padding: 28px; min-width: 300px; max-width: 420px; width: 90%; }
+.dialog-title { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; color: #f0c94a; margin-bottom: 6px; }
+.dialog-sub { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 18px; }
+.dialog-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.dialog-option { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid rgba(201,168,76,0.2); border-radius: 3px; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.02); }
+.dialog-option:hover:not(.locked-opt) { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
+.dialog-option.selected { border-color: #f0c94a; background: rgba(201,168,76,0.12); }
+.dialog-option.locked-opt { opacity: 0.45; cursor: not-allowed; }
+.dialog-option input[type=“radio”] { accent-color: #f0c94a; width: 16px; height: 16px; flex-shrink: 0; }
+.dialog-option-label { font-size: 0.9rem; color: var(–cream); flex: 1; }
+.dialog-option-locked { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; color: #e05444; }
+.dialog-btns { display: flex; gap: 8px; justify-content: flex-end; }
 </style>
 
 </head>
@@ -277,19 +208,30 @@ transition: all 0.2s;
   <button class="tab-btn" onclick="showPage('commissioner')">Commissioner</button>
 </nav>
 
+<!-- ══ SYNC DIALOG ══ -->
+
+<div class="dialog-overlay" id="sync-dialog" style="display:none;">
+  <div class="dialog-box">
+    <div class="dialog-title">⛳ Sync Live Scores</div>
+    <div class="dialog-sub">Select tournament to sync</div>
+    <div class="dialog-options" id="sync-dialog-options"></div>
+    <div class="dialog-btns">
+      <button class="action-btn danger" onclick="closeSyncDialog()">Cancel</button>
+      <button class="action-btn" style="background:rgba(240,201,74,0.25);border-color:#f0c94a;" onclick="confirmSync()">Sync ✓</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ LEADERBOARD PAGE ══ -->
 
 <div id="page-leaderboard" class="page active">
   <p class="section-title">Leaderboard</p>
   <p class="section-sub">Live standings by major</p>
-
   <div class="leaderboard-major-selector" id="lb-major-selector"></div>
-
   <div style="margin-bottom:16px;">
-    <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="syncLiveScores()">⛳ Sync Live Scores</button>
+    <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="openSyncDialog('lb-sync-status')">⛳ Sync Live Scores</button>
     <div id="lb-sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-top:8px;"></div>
   </div>
-
   <div class="card" id="lb-container">
     <div class="empty-state">No picks submitted yet</div>
   </div>
@@ -311,12 +253,9 @@ transition: all 0.2s;
 <div id="page-picks" class="page">
   <p class="section-title">Make Your Picks</p>
   <p class="section-sub">Build your team for the selected major</p>
-
   <div class="card" style="margin-bottom:20px;">
     <div class="form-row">
-      <select class="form-select" id="pick-player-select">
-        <option value="">Select your name…</option>
-      </select>
+      <select class="form-select" id="pick-player-select"><option value="">Select your name…</option></select>
       <select class="form-select" id="pick-major-select">
         <option value="">Select major…</option>
         <option value="masters">The Masters</option>
@@ -326,7 +265,6 @@ transition: all 0.2s;
       </select>
     </div>
   </div>
-
   <div id="pick-builder" style="display:none;">
     <div id="pick-lock-msg"></div>
     <div class="budget-meter">
@@ -342,40 +280,33 @@ transition: all 0.2s;
         <div class="budget-val" id="count-display">0 / 5</div>
       </div>
     </div>
-
-```
-<div class="builder-layout">
-  <div>
-    <div style="margin-bottom:10px;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);">Available Golfers</div>
-    <div class="filter-row">
-      <button class="filter-btn active" onclick="filterTier('all',this)">All</button>
-      <button class="filter-btn" onclick="filterTier('5',this)">Tier 1 (5pt)</button>
-      <button class="filter-btn" onclick="filterTier('4',this)">Tier 2 (4pt)</button>
-      <button class="filter-btn" onclick="filterTier('3',this)">Tier 3 (3pt)</button>
-      <button class="filter-btn" onclick="filterTier('2',this)">Tier 4 (2pt)</button>
-      <button class="filter-btn" onclick="filterTier('1',this)">Tier 5 (1pt)</button>
-    </div>
-    <input type="text" class="search-input" id="golfer-search" placeholder="Search golfer…" oninput="renderGolferList()" style="width:100%;margin-bottom:10px;">
-    <div class="golfer-list" id="golfer-list"></div>
-  </div>
-
-  <div>
-    <div style="margin-bottom:10px;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);">Your Team</div>
-    <div id="team-slots"></div>
-    <div id="amateur-slot-wrap" style="display:none;margin-top:12px;">
-      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(36,113,163,0.7);margin-bottom:6px;">U.S. Open Amateur Pick (Free)</div>
-      <div class="team-slot amateur-slot" id="amateur-slot">
-        <span class="slot-empty">Select amateur golfer</span>
+    <div class="builder-layout">
+      <div>
+        <div style="margin-bottom:10px;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);">Available Golfers</div>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterTier('all',this)">All</button>
+          <button class="filter-btn" onclick="filterTier('5',this)">Tier 1 (5pt)</button>
+          <button class="filter-btn" onclick="filterTier('4',this)">Tier 2 (4pt)</button>
+          <button class="filter-btn" onclick="filterTier('3',this)">Tier 3 (3pt)</button>
+          <button class="filter-btn" onclick="filterTier('2',this)">Tier 4 (2pt)</button>
+          <button class="filter-btn" onclick="filterTier('1',this)">Tier 5 (1pt)</button>
+        </div>
+        <input type="text" class="search-input" id="golfer-search" placeholder="Search golfer…" oninput="renderGolferList()" style="width:100%;margin-bottom:10px;">
+        <div class="golfer-list" id="golfer-list"></div>
       </div>
-      <div class="golfer-list" id="amateur-list" style="max-height:160px;margin-top:6px;display:none;"></div>
-      <button class="action-btn" style="margin-top:6px;font-size:0.62rem;" onclick="toggleAmateurList()">Browse Amateurs</button>
+      <div>
+        <div style="margin-bottom:10px;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);">Your Team</div>
+        <div id="team-slots"></div>
+        <div id="amateur-slot-wrap" style="display:none;margin-top:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(36,113,163,0.7);margin-bottom:6px;">U.S. Open Amateur Pick (Free)</div>
+          <div class="team-slot amateur-slot" id="amateur-slot"><span class="slot-empty">Select amateur golfer</span></div>
+          <div class="golfer-list" id="amateur-list" style="max-height:160px;margin-top:6px;display:none;"></div>
+          <button class="action-btn" style="margin-top:6px;font-size:0.62rem;" onclick="toggleAmateurList()">Browse Amateurs</button>
+        </div>
+        <button class="submit-btn" id="submit-picks-btn" disabled onclick="submitPicks()">Submit Team</button>
+        <div id="pick-msg"></div>
+      </div>
     </div>
-    <button class="submit-btn" id="submit-picks-btn" disabled onclick="submitPicks()">Submit Team</button>
-    <div id="pick-msg"></div>
-  </div>
-</div>
-```
-
   </div>
 </div>
 
@@ -384,7 +315,6 @@ transition: all 0.2s;
 <div id="page-rules" class="page">
   <p class="section-title">Rulebook</p>
   <p class="section-sub">How the pool works</p>
-
   <div class="card">
     <div class="rules-section">
       <h3>Overview</h3>
@@ -447,8 +377,6 @@ transition: all 0.2s;
     <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:rgba(224,84,68,0.8);">DO NOT TOUCH THIS PAGE UNLESS YOU ARE NAMED RYAN.</div>
   </div>
 
-  <!-- Players -->
-
   <div class="card comm-section">
     <h3>Pool Players</h3>
     <div class="form-row">
@@ -458,8 +386,6 @@ transition: all 0.2s;
     <div class="tag-list" id="player-tag-list"></div>
     <div id="player-msg"></div>
   </div>
-
-  <!-- Golfer Roster -->
 
   <div class="card comm-section">
     <h3>Golfer Roster (WGR for Selected Major)</h3>
@@ -471,43 +397,33 @@ transition: all 0.2s;
         <option value="open">The Open Championship</option>
       </select>
     </div>
-
-```
-<div style="margin-bottom:16px;">
-  <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Bulk Import</div>
-  <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-bottom:8px;line-height:1.6;">
-    Paste one golfer per line. Accepted formats:<br>
-    &nbsp;&nbsp;Scottie Scheffler, 1<br>
-    &nbsp;&nbsp;1. Scottie Scheffler<br>
-    &nbsp;&nbsp;Scottie Scheffler 1<br>
-    For amateurs, add "amateur" anywhere on the line.
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Bulk Import</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-bottom:8px;line-height:1.6;">
+        Paste one golfer per line. Accepted formats:<br>
+        &nbsp;&nbsp;Scottie Scheffler, 1&nbsp;&nbsp;&nbsp;&nbsp;1. Scottie Scheffler&nbsp;&nbsp;&nbsp;&nbsp;Scottie Scheffler 1<br>
+        For amateurs, add "amateur" anywhere on the line.
+      </div>
+      <textarea id="bulk-import-text" class="form-input" rows="8" placeholder="Scottie Scheffler, 1&#10;Rory McIlroy, 2&#10;..." style="width:100%;resize:vertical;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:1.6;"></textarea>
+      <div class="form-row" style="margin-top:8px;">
+        <button class="action-btn" onclick="bulkImport(false)">Preview Import</button>
+        <button class="action-btn" style="background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Import All</button>
+        <button class="action-btn danger" onclick="clearRoster()">Clear Roster</button>
+      </div>
+      <div id="bulk-preview" style="margin-top:10px;"></div>
+    </div>
+    <hr style="border:none;border-top:1px solid rgba(201,168,76,0.1);margin:16px 0;">
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Add Single Golfer</div>
+    <div class="form-row">
+      <input class="form-input" id="new-golfer-name" placeholder="Golfer name…">
+      <input class="form-input" id="new-golfer-rank" placeholder="WGR rank (e.g. 5)" type="number" min="1" style="max-width:140px;">
+      <label class="cut-toggle"><input type="checkbox" id="new-golfer-amateur"> Amateur</label>
+      <button class="action-btn" onclick="addGolfer()">Add</button>
+    </div>
+    <div id="golfer-msg"></div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin:14px 0 8px;">Current Roster (<span id="roster-count">0</span> golfers)</div>
+    <div class="golfer-list" id="roster-list" style="max-height:300px;margin-top:4px;"></div>
   </div>
-  <textarea id="bulk-import-text" class="form-input" rows="8" placeholder="Scottie Scheffler, 1&#10;Rory McIlroy, 2&#10;Xander Schauffele, 3&#10;Collin Morikawa, 4&#10;..." style="width:100%;resize:vertical;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:1.6;"></textarea>
-  <div class="form-row" style="margin-top:8px;">
-    <button class="action-btn" onclick="bulkImport(false)">Preview Import</button>
-    <button class="action-btn" style="background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Import All</button>
-    <button class="action-btn danger" onclick="clearRoster()">Clear Roster</button>
-  </div>
-  <div id="bulk-preview" style="margin-top:10px;"></div>
-</div>
-
-<hr style="border:none;border-top:1px solid rgba(201,168,76,0.1);margin:16px 0;">
-
-<div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Add Single Golfer</div>
-<div class="form-row">
-  <input class="form-input" id="new-golfer-name" placeholder="Golfer name…">
-  <input class="form-input" id="new-golfer-rank" placeholder="WGR rank (e.g. 5)" type="number" min="1" style="max-width:140px;">
-  <label class="cut-toggle"><input type="checkbox" id="new-golfer-amateur"> Amateur</label>
-  <button class="action-btn" onclick="addGolfer()">Add</button>
-</div>
-<div id="golfer-msg"></div>
-<div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin:14px 0 8px;">Current Roster (<span id="roster-count">0</span> golfers)</div>
-<div class="golfer-list" id="roster-list" style="max-height:300px;margin-top:4px;"></div>
-```
-
-  </div>
-
-  <!-- Score Entry -->
 
   <div class="card comm-section">
     <h3>Score Entry</h3>
@@ -518,48 +434,32 @@ transition: all 0.2s;
         <option value="usopen">U.S. Open</option>
         <option value="open">The Open Championship</option>
       </select>
-      <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="syncLiveScores()">⛳ Sync Live Scores</button>
+      <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="openSyncDialog('sync-status')">⛳ Sync Live Scores</button>
     </div>
     <div id="sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-bottom:12px;"></div>
-
-```
-<!-- Active Scoring Major -->
-<div style="margin-bottom:16px;padding:12px;background:rgba(240,201,74,0.06);border:1px solid rgba(240,201,74,0.2);border-radius:3px;">
-  <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Active Scoring Major (Live Sync Target)</div>
-  <div id="active-scoring-selector"></div>
-</div>
-
-<div id="unmatched-container"></div>
-<div id="score-entry-container"></div>
-<button class="action-btn" style="margin-top:12px;" onclick="saveScores()">Save Scores</button>
-<div id="score-msg"></div>
-```
-
+    <div id="unmatched-container"></div>
+    <div id="score-entry-container"></div>
+    <button class="action-btn" style="margin-top:12px;" onclick="saveScores()">Save Scores</button>
+    <div id="score-msg"></div>
   </div>
-
-  <!-- Pick Deadlines -->
 
   <div class="card comm-section">
     <h3>Pick Deadlines</h3>
     <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">
-      Picks lock automatically at the default tee time. Override any deadline below to set a custom cutoff. Leave blank to use the default.
+      Picks lock automatically at the default tee time. Override below to set a custom cutoff.
     </div>
     <div id="deadline-rows"></div>
     <button class="action-btn" style="margin-top:12px;" onclick="saveDeadlines()">Save Deadlines</button>
     <div id="deadline-msg"></div>
   </div>
 
-  <!-- Lock Majors -->
-
   <div class="card comm-section">
     <h3>Lock Majors</h3>
     <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">
-      Lock a major to prevent any further score edits. Use this once a tournament is complete.
+      Lock a major to prevent score edits and syncs. Use once a tournament is complete.
     </div>
     <div id="lock-major-list"></div>
   </div>
-
-  <!-- Danger Zone -->
 
   <div class="card comm-section">
     <h3>Danger Zone</h3>
@@ -578,7 +478,7 @@ transition: all 0.2s;
 
 <script>
 // ══════════════════════════════════════════
-//  STATE
+//  CONSTANTS & STATE
 // ══════════════════════════════════════════
 const MAJORS = [
   { id: 'masters', label: 'The Masters',           defaultDeadline: '2026-04-09T08:00:00-04:00' },
@@ -608,12 +508,68 @@ function defaultState() {
     scores:  { masters: {}, pga: {}, usopen: {}, open: {} },
     worstRounds: { masters: {}, pga: {}, usopen: {}, open: {} },
     deadlines: {},
-    activeScoringMajor: 'pga',
     lockedMajors: {},
   };
 }
 
-// ── DEADLINE HELPERS ──
+let state = defaultState();
+let activeLbMajor = 'masters';
+let activeTeamsMajor = 'masters';
+let currentTierFilter = 'all';
+let pickMajor = null;
+let pickPlayer = null;
+let selectedGolfers = [];
+let selectedAmateur = null;
+let syncStatusTarget = 'sync-status';
+
+// ══════════════════════════════════════════
+//  SYNC DIALOG
+// ══════════════════════════════════════════
+function openSyncDialog(statusTargetId) {
+  syncStatusTarget = statusTargetId;
+  const opts = document.getElementById('sync-dialog-options');
+  opts.innerHTML = MAJORS.map(m => {
+    const locked = state.lockedMajors?.[m.id];
+    return `<label class="dialog-option${locked ? ' locked-opt' : ''}" id="dialog-opt-${m.id}">
+      <input type="radio" name="sync-major" value="${m.id}" ${locked ? 'disabled' : ''}>
+      <span class="dialog-option-label">${m.label}</span>
+      ${locked ? '<span class="dialog-option-locked">⛔ Locked</span>' : ''}
+    </label>`;
+  }).join('');
+
+  const firstUnlocked = MAJORS.find(m => !state.lockedMajors?.[m.id]);
+  if (firstUnlocked) {
+    const radio = opts.querySelector(`input[value="${firstUnlocked.id}"]`);
+    if (radio) {
+      radio.checked = true;
+      document.getElementById(`dialog-opt-${firstUnlocked.id}`).classList.add('selected');
+    }
+  }
+
+  opts.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      opts.querySelectorAll('.dialog-option').forEach(o => o.classList.remove('selected'));
+      r.closest('.dialog-option').classList.add('selected');
+    });
+  });
+
+  document.getElementById('sync-dialog').style.display = 'flex';
+}
+
+function closeSyncDialog() {
+  document.getElementById('sync-dialog').style.display = 'none';
+}
+
+async function confirmSync() {
+  const selected = document.querySelector('input[name="sync-major"]:checked');
+  if (!selected) { alert('Please select a major.'); return; }
+  closeSyncDialog();
+  await syncLiveScores(selected.value);
+}
+
+// ══════════════════════════════════════════
+//  DEADLINE HELPERS
+// ══════════════════════════════════════════
 function getDeadline(majorId) {
   const major = MAJORS.find(m => m.id === majorId);
   const override = state.deadlines?.[majorId];
@@ -666,9 +622,7 @@ function saveDeadlines() {
   if (!state.deadlines) state.deadlines = {};
   MAJORS.forEach(m => {
     const input = document.getElementById(`deadline-${m.id}`);
-    if (input && input.value) {
-      state.deadlines[m.id] = new Date(input.value).toISOString();
-    }
+    if (input && input.value) state.deadlines[m.id] = new Date(input.value).toISOString();
   });
   saveState();
   renderDeadlineRows();
@@ -676,28 +630,9 @@ function saveDeadlines() {
   setTimeout(() => document.getElementById('deadline-msg').innerHTML = '', 2500);
 }
 
-// ── ACTIVE SCORING MAJOR ──
-function renderActiveScoringSelector() {
-  const el = document.getElementById('active-scoring-selector');
-  if (!el) return;
-  el.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-    MAJORS.map(m =>
-      '<button class="action-btn" ' +
-      'style="' + (state.activeScoringMajor === m.id ? 'background:rgba(240,201,74,0.3);border-color:#f0c94a;color:#f0c94a;' : '') + '"' +
-      ' onclick="setActiveScoringMajor(\'' + m.id + '\')">' +
-      m.label +
-      '</button>'
-    ).join('') +
-  '</div>';
-}
-
-function setActiveScoringMajor(id) {
-  state.activeScoringMajor = id;
-  saveState();
-  renderActiveScoringSelector();
-}
-
-// ── LOCK MAJORS ──
+// ══════════════════════════════════════════
+//  LOCK MAJORS
+// ══════════════════════════════════════════
 function renderLockMajorList() {
   const el = document.getElementById('lock-major-list');
   if (!el) return;
@@ -707,7 +642,7 @@ function renderLockMajorList() {
       '<div>' +
         '<div style="font-size:0.88rem;color:#f0f0f0;">' + m.label + '</div>' +
         '<div style="font-family:\'DM Mono\',monospace;font-size:0.62rem;margin-top:2px;color:' + (locked ? '#e05444' : '#4caf50') + ';">' +
-          (locked ? '⛔ Locked — scores frozen' : '✓ Open — scores editable') +
+          (locked ? '⛔ Locked — scores & sync frozen' : '✓ Open — scores editable') +
         '</div>' +
       '</div>' +
       '<button class="action-btn ' + (locked ? 'danger' : '') + '" onclick="toggleLockMajor(\'' + m.id + '\')">' +
@@ -722,10 +657,10 @@ function toggleLockMajor(id) {
   const locked = state.lockedMajors[id];
   const label = MAJORS.find(m => m.id === id).label;
   if (locked) {
-    if (!confirm('Unlock ' + label + '? Scores can be edited again.')) return;
+    if (!confirm('Unlock ' + label + '? Scores and sync will be editable again.')) return;
     delete state.lockedMajors[id];
   } else {
-    if (!confirm('Lock ' + label + '? No further score edits will be allowed.')) return;
+    if (!confirm('Lock ' + label + '? No further score edits or live syncs will be allowed.')) return;
     state.lockedMajors[id] = true;
   }
   saveState();
@@ -750,24 +685,12 @@ async function fbSet(path, data) {
   });
 }
 
-async function fbPatch(path, data) {
-  await fetch(`${FIREBASE_URL}/${path}.json`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-}
-
 let liveListeners = {};
 function fbListen(path, callback) {
   if (liveListeners[path]) liveListeners[path].close();
   const es = new EventSource(`${FIREBASE_URL}/${path}.json`);
-  es.addEventListener('put', e => {
-    try { const d = JSON.parse(e.data); callback(d.data); } catch {}
-  });
-  es.addEventListener('patch', e => {
-    try { const d = JSON.parse(e.data); callback(null, d.data); } catch {}
-  });
+  es.addEventListener('put', e => { try { const d = JSON.parse(e.data); callback(d.data); } catch {} });
+  es.addEventListener('patch', e => { try { const d = JSON.parse(e.data); callback(null, d.data); } catch {} });
   liveListeners[path] = es;
   return es;
 }
@@ -785,7 +708,6 @@ async function loadState() {
         scores:  { ...def.scores,  ...(remote.scores  || {}) },
         worstRounds: { ...def.worstRounds, ...(remote.worstRounds || {}) },
         deadlines: remote.deadlines || {},
-        activeScoringMajor: remote.activeScoringMajor || 'pga',
         lockedMajors: remote.lockedMajors || {},
       };
     } else {
@@ -802,22 +724,19 @@ async function loadState() {
 
 async function saveState() {
   showSyncIndicator('saving');
-  try {
-    await fbSet('pool', state);
-  } catch(e) {
-    console.warn('Firebase save failed', e);
-  }
+  try { await fbSet('pool', state); } catch(e) { console.warn('Firebase save failed', e); }
   hideSyncIndicator();
 }
 
 function showSyncIndicator(mode) {
-  let el = document.getElementById('sync-indicator');
+  const el = document.getElementById('sync-indicator');
   if (!el) return;
   el.textContent = mode === 'loading' ? '⟳ Loading…' : '⟳ Saving…';
   el.style.opacity = '1';
 }
+
 function hideSyncIndicator() {
-  let el = document.getElementById('sync-indicator');
+  const el = document.getElementById('sync-indicator');
   if (!el) return;
   el.textContent = '✓ Synced';
   setTimeout(() => { if(el) el.style.opacity = '0'; }, 1500);
@@ -834,7 +753,6 @@ function startLiveSync() {
       scores:  { ...def.scores,  ...(data.scores  || {}) },
       worstRounds: { ...def.worstRounds, ...(data.worstRounds || {}) },
       deadlines: data.deadlines || {},
-      activeScoringMajor: data.activeScoringMajor || 'pga',
       lockedMajors: data.lockedMajors || {},
     };
     const activePage = document.querySelector('.page.active')?.id;
@@ -842,15 +760,6 @@ function startLiveSync() {
     if (activePage === 'page-teams') renderTeams();
   });
 }
-
-let state = defaultState();
-let activeLbMajor = 'masters';
-let activeTeamsMajor = 'masters';
-let currentTierFilter = 'all';
-let pickMajor = null;
-let pickPlayer = null;
-let selectedGolfers = [];
-let selectedAmateur = null;
 
 // ══════════════════════════════════════════
 //  NAVIGATION
@@ -908,25 +817,18 @@ function renderLeaderboard() {
   const rows = Object.entries(picks).map(([player, data]) => {
     const golfers = data.golfers || [];
     const amateur = data.amateur || null;
-    let total = 0;
-    let hasPending = false;
-    let golferDetails = [];
+    let total = 0, hasPending = false, golferDetails = [];
 
     for (const g of golfers) {
       const sc = scores[g.name];
       if (sc === undefined || sc === null || sc === '') { hasPending = true; golferDetails.push({ name: g.name, score: null, cut: g.cut }); continue; }
       let s = parseFloat(sc);
-      if (g.cut) {
-        const sat = parseFloat(worst.sat || 0);
-        const sun = parseFloat(worst.sun || 0);
-        s += sat + sun;
-      }
+      if (g.cut) s += parseFloat(worst.sat || 0) + parseFloat(worst.sun || 0);
       total += s;
-      golferDetails.push({ name: g.name, score: s, cut: g.cut, raw: parseFloat(sc) });
+      golferDetails.push({ name: g.name, score: s, cut: g.cut });
     }
 
-    let amateurBonus = 0;
-    let amateurDetail = null;
+    let amateurBonus = 0, amateurDetail = null;
     if (isUsOpen && amateur) {
       const asc = scores[amateur.name];
       if (asc !== undefined && asc !== null && asc !== '') {
@@ -948,7 +850,7 @@ function renderLeaderboard() {
     return a.total - b.total;
   });
 
-  const table = `
+  document.getElementById('lb-container').innerHTML = `
     <table class="lb-table">
       <thead><tr>
         <th style="width:40px;">#</th>
@@ -958,29 +860,25 @@ function renderLeaderboard() {
       <tbody>
         ${rows.map((r, i) => {
           const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
-          const scoreStr = r.hasPending ? '' : formatScore(r.total);
           const scoreClass = r.total < 0 ? 'score-under' : r.total > 0 ? 'score-over' : 'score-even';
           const tags = r.golferDetails.map(g => {
             const sc = g.score !== null ? formatScore(g.score) : '–';
             return `<span class="gtag ${g.cut ? 'cut' : ''}">${g.name} ${sc}${g.cut ? ' ✂' : ''}</span>`;
           }).join('');
           const aTag = r.amateurDetail ? `<span class="gtag amateur">${r.amateurDetail.name}${r.amateurDetail.pending ? ' –' : r.amateurDetail.madeCut ? ' −3 ★' : ' (cut, no pen)'}</span>` : '';
-          return `
-            <tr class="${rankClass}">
-              <td><span class="rank-num">${i + 1}</span></td>
-              <td>
-                <div class="player-name-lb">${r.player}</div>
-                <div class="golfer-tags">${tags}${aTag}</div>
-              </td>
-              <td class="score-cell">
-                ${r.hasPending ? '<span class="score-pending">LIVE</span>' : `<span class="${scoreClass}">${scoreStr}</span>`}
-              </td>
-            </tr>`;
+          return `<tr class="${rankClass}">
+            <td><span class="rank-num">${i + 1}</span></td>
+            <td>
+              <div class="player-name-lb">${r.player}</div>
+              <div class="golfer-tags">${tags}${aTag}</div>
+            </td>
+            <td class="score-cell">
+              ${r.hasPending ? '<span class="score-pending">LIVE</span>' : `<span class="${scoreClass}">${formatScore(r.total)}</span>`}
+            </td>
+          </tr>`;
         }).join('')}
       </tbody>
     </table>`;
-
-  document.getElementById('lb-container').innerHTML = table;
 }
 
 function formatScore(s) {
@@ -1085,23 +983,17 @@ function renderGolferList() {
   const search = (document.getElementById('golfer-search')?.value || '').toLowerCase();
   const allGolfers = state.golfers[pickMajor].filter(g => !g.amateur);
   const container = document.getElementById('golfer-list');
-
   const filtered = allGolfers.filter(g => {
     const cost = getCost(g.rank);
     const tierOk = currentTierFilter === 'all' || String(cost) === currentTierFilter;
     const searchOk = !search || g.name.toLowerCase().includes(search);
     return tierOk && searchOk;
   });
-
   if (!filtered.length) { container.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:16px;text-align:center;">No golfers found</div>'; return; }
-
   container.innerHTML = filtered.map(g => {
     const cost = getCost(g.rank);
     const isSelected = selectedGolfers.some(s => s.name === g.name);
-    const budget = getRemainingBudget();
-    const wouldExceed = !isSelected && cost > budget;
-    const atMax = !isSelected && selectedGolfers.length >= 5;
-    const disabled = (wouldExceed || atMax) && !isSelected;
+    const disabled = !isSelected && (cost > getRemainingBudget() || selectedGolfers.length >= 5);
     return `<div class="golfer-row ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}"
       onclick="${disabled ? '' : `toggleGolfer('${g.name.replace(/'/g,"\\'")}', ${g.rank})`}">
       <div>
@@ -1123,27 +1015,22 @@ function toggleGolfer(name, rank) {
     if (cost > getRemainingBudget()) return;
     selectedGolfers.push({ name, rank, cut: false });
   }
-  renderGolferList();
-  renderTeamSlots();
-  updateBudget();
+  renderGolferList(); renderTeamSlots(); updateBudget();
 }
 
 function getRemainingBudget() {
-  const spent = selectedGolfers.reduce((sum, g) => sum + getCost(g.rank), 0);
-  return 15 - spent;
+  return 15 - selectedGolfers.reduce((sum, g) => sum + getCost(g.rank), 0);
 }
 
 function updateBudget() {
   const remaining = getRemainingBudget();
-  const spent = 15 - remaining;
-  const pct = Math.min(100, (spent / 15) * 100);
+  const pct = Math.min(100, ((15 - remaining) / 15) * 100);
   document.getElementById('budget-display').textContent = remaining;
   document.getElementById('count-display').textContent = `${selectedGolfers.length} / 5`;
   const bar = document.getElementById('budget-bar');
   bar.style.width = pct + '%';
   bar.className = 'budget-fill' + (remaining <= 2 ? ' danger' : '');
-  const btn = document.getElementById('submit-picks-btn');
-  btn.disabled = selectedGolfers.length < 4;
+  document.getElementById('submit-picks-btn').disabled = selectedGolfers.length < 4;
 }
 
 function renderTeamSlots() {
@@ -1164,7 +1051,6 @@ function renderTeamSlots() {
     }
   }
   container.innerHTML = slots.join('');
-
   const aSlot = document.getElementById('amateur-slot');
   if (aSlot) {
     if (selectedAmateur) {
@@ -1220,10 +1106,7 @@ function addPlayer() {
   const input = document.getElementById('new-player-input');
   const name = input.value.trim();
   if (!name) return;
-  if (state.players.includes(name)) {
-    document.getElementById('player-msg').innerHTML = '<div class="msg error">Player already exists</div>';
-    return;
-  }
+  if (state.players.includes(name)) { document.getElementById('player-msg').innerHTML = '<div class="msg error">Player already exists</div>'; return; }
   state.players.push(name);
   saveState();
   input.value = '';
@@ -1254,14 +1137,8 @@ function addGolfer() {
   const rank = parseInt(document.getElementById('new-golfer-rank').value);
   const amateur = document.getElementById('new-golfer-amateur').checked;
   const major = document.getElementById('roster-major-select').value;
-  if (!name || (!amateur && !rank)) {
-    document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Name and rank required</div>';
-    return;
-  }
-  if (state.golfers[major].some(g => g.name.toLowerCase() === name.toLowerCase())) {
-    document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Golfer already in roster</div>';
-    return;
-  }
+  if (!name || (!amateur && !rank)) { document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Name and rank required</div>'; return; }
+  if (state.golfers[major].some(g => g.name.toLowerCase() === name.toLowerCase())) { document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Golfer already in roster</div>'; return; }
   state.golfers[major].push({ name, rank: rank || 999, amateur });
   state.golfers[major].sort((a,b) => a.rank - b.rank);
   saveState();
@@ -1281,8 +1158,7 @@ function removeGolfer(major, name) {
 
 function clearRoster() {
   const major = document.getElementById('roster-major-select').value;
-  const label = MAJORS.find(m => m.id === major).label;
-  if (!confirm(`Clear the entire ${label} roster? This cannot be undone.`)) return;
+  if (!confirm(`Clear the entire ${MAJORS.find(m=>m.id===major).label} roster? This cannot be undone.`)) return;
   state.golfers[major] = [];
   saveState();
   renderRosterList();
@@ -1294,21 +1170,15 @@ function parseBulkLine(line) {
   if (!line) return null;
   const isAmateur = /amateur/i.test(line);
   const cleaned = line.replace(/amateur/gi, '').trim();
-
   let m = cleaned.match(/^(\d+)[.)]\s*(.+)$/);
   if (m) return { name: m[2].trim(), rank: parseInt(m[1]), amateur: isAmateur };
-
   m = cleaned.match(/^(.+?)[,\-–]\s*(\d+)\s*$/);
   if (m) return { name: m[1].trim(), rank: parseInt(m[2]), amateur: isAmateur };
-
   m = cleaned.match(/^(.+?)\s+(\d+)\s*$/);
   if (m) return { name: m[1].trim(), rank: parseInt(m[2]), amateur: isAmateur };
-
   m = cleaned.match(/^(\d+)\s+(.+)$/);
   if (m) return { name: m[2].trim(), rank: parseInt(m[1]), amateur: isAmateur };
-
   if (isAmateur && cleaned.length > 1) return { name: cleaned, rank: 999, amateur: true };
-
   return null;
 }
 
@@ -1317,47 +1187,32 @@ function bulkImport(doImport) {
   const raw = document.getElementById('bulk-import-text').value;
   const lines = raw.split('\n');
   const preview = document.getElementById('bulk-preview');
-
-  const parsed = [];
-  const errors = [];
-  const dupes = [];
-
+  const parsed = [], errors = [], dupes = [];
   lines.forEach((line, i) => {
     if (!line.trim()) return;
     const result = parseBulkLine(line);
-    if (!result) {
-      errors.push(`Line ${i+1}: "${line}" — couldn't parse`);
-      return;
-    }
-    if (parsed.some(p => p.name.toLowerCase() === result.name.toLowerCase())) {
-      dupes.push(result.name);
-      return;
-    }
+    if (!result) { errors.push(`Line ${i+1}: "${line}" — couldn't parse`); return; }
+    if (parsed.some(p => p.name.toLowerCase() === result.name.toLowerCase())) { dupes.push(result.name); return; }
     parsed.push(result);
   });
-
   if (!doImport) {
     if (!parsed.length && !errors.length) { preview.innerHTML = ''; return; }
     const rows = parsed.map(g =>
       `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
         <span style="font-size:0.85rem;color:var(--cream);">${g.name}${g.amateur ? '<span class="badge-amateur">amateur</span>' : ''}</span>
         <span style="font-family:DM Mono;font-size:0.7rem;color:var(--gold);">${g.amateur ? 'free' : `#${g.rank} · ${getCost(g.rank)}pt`}</span>
-      </div>`
-    ).join('');
+      </div>`).join('');
     const errRows = errors.map(e => `<div style="font-family:DM Mono;font-size:0.65rem;color:#e57373;padding:3px 0;">${e}</div>`).join('');
     const dupeRows = dupes.length ? `<div style="font-family:DM Mono;font-size:0.65rem;color:#e5a050;margin-top:4px;">Duplicates skipped: ${dupes.join(', ')}</div>` : '';
     preview.innerHTML = `
       <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Preview — ${parsed.length} golfer${parsed.length !== 1 ? 's' : ''}</div>
       <div style="max-height:200px;overflow-y:auto;margin-bottom:6px;">${rows}</div>
       ${errRows}${dupeRows}
-      ${parsed.length ? `<button class="action-btn" style="margin-top:10px;background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Confirm Import ${parsed.length} Golfers</button>` : ''}
-    `;
+      ${parsed.length ? `<button class="action-btn" style="margin-top:10px;background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Confirm Import ${parsed.length} Golfers</button>` : ''}`;
   } else {
     let added = 0, skipped = 0;
     parsed.forEach(g => {
-      if (state.golfers[major].some(x => x.name.toLowerCase() === g.name.toLowerCase())) {
-        skipped++; return;
-      }
+      if (state.golfers[major].some(x => x.name.toLowerCase() === g.name.toLowerCase())) { skipped++; return; }
       state.golfers[major].push({ name: g.name, rank: g.rank, amateur: g.amateur });
       added++;
     });
@@ -1394,23 +1249,14 @@ function renderRosterList() {
 const WORKER_URL = 'https://golf-scores-proxy.basford-ryan38.workers.dev';
 
 function cleanName(name) {
-  return name
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z\s]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim();
 }
 
 function nameSimilarity(a, b) {
-  const ca = cleanName(a);
-  const cb = cleanName(b);
+  const ca = cleanName(a), cb = cleanName(b);
   if (ca === cb) return 1;
-  const aParts = ca.split(' ');
-  const bParts = cb.split(' ');
-  const aLast = aParts[aParts.length - 1];
-  const bLast = bParts[bParts.length - 1];
+  const aParts = ca.split(' '), bParts = cb.split(' ');
+  const aLast = aParts[aParts.length - 1], bLast = bParts[bParts.length - 1];
   if (aLast === bLast) return 0.9;
   if (aParts[0] === bParts[0] && aLast === bLast) return 1;
   if (ca.includes(cb) || cb.includes(ca)) return 0.8;
@@ -1420,18 +1266,21 @@ function nameSimilarity(a, b) {
 function calcTotalScore(rounds) {
   let total = 0;
   for (const r of rounds) {
-    if (!r.score || r.score === '-' || r.score === '') continue;
-    if (r.score === 'E') continue;
+    if (!r.score || r.score === '-' || r.score === '' || r.score === 'E') continue;
     const n = parseInt(r.score);
     if (!isNaN(n)) total += n;
   }
   return total;
 }
 
-async function syncLiveScores() {
-  const major = state.activeScoringMajor;
-  const statusEl = document.getElementById('sync-status') || document.getElementById('lb-sync-status');
+async function syncLiveScores(major) {
+  const statusEl = document.getElementById(syncStatusTarget);
   const unmatchedEl = document.getElementById('unmatched-container');
+
+  if (state.lockedMajors?.[major]) {
+    if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">⛔ ${MAJORS.find(m=>m.id===major)?.label} is locked — sync blocked.</span>`;
+    return;
+  }
 
   if (statusEl) statusEl.innerHTML = '<span style="color:rgba(240,201,74,0.7);">⟳ Fetching live scores…</span>';
   if (unmatchedEl) unmatchedEl.innerHTML = '';
@@ -1439,52 +1288,32 @@ async function syncLiveScores() {
   try {
     const res = await fetch(WORKER_URL);
     const data = await res.json();
-
-    if (data.error) {
-      if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ ${data.error}</span>`;
-      return;
-    }
+    if (data.error) { if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ ${data.error}</span>`; return; }
 
     const leaderboard = data.leaderboard || [];
     const picks = state.picks[major] || {};
-
     const pickedNames = new Set();
     Object.values(picks).forEach(d => {
       (d.golfers || []).forEach(g => pickedNames.add(g.name));
       if (d.amateur) pickedNames.add(d.amateur.name);
     });
 
-    let matched = 0;
-    let unmatched = [];
-
+    let matched = 0, unmatched = [];
     pickedNames.forEach(pickedName => {
-      let bestMatch = null;
-      let bestScore = 0;
-
+      let bestMatch = null, bestScore = 0;
       leaderboard.forEach(player => {
         const sim = nameSimilarity(pickedName, player.name);
-        if (sim > bestScore) {
-          bestScore = sim;
-          bestMatch = player;
-        }
+        if (sim > bestScore) { bestScore = sim; bestMatch = player; }
       });
-
       if (bestMatch && bestScore >= 0.8) {
-        const total = calcTotalScore(bestMatch.rounds);
-        state.scores[major][pickedName] = total;
-
+        state.scores[major][pickedName] = calcTotalScore(bestMatch.rounds);
         const isCut = bestMatch.status === 'cut' ||
-          (bestMatch.rounds.length <= 2 && leaderboard.some(p =>
-            nameSimilarity(p.name, pickedName) >= 0.8 &&
-            p.rounds.length > 2
-          ));
-
+          (bestMatch.rounds.length <= 2 && leaderboard.some(p => nameSimilarity(p.name, pickedName) >= 0.8 && p.rounds.length > 2));
         Object.values(picks).forEach(d => {
           const g = (d.golfers || []).find(x => x.name === pickedName);
           if (g && isCut) g.cut = true;
           if (d.amateur?.name === pickedName && isCut) d.amateur.cut = true;
         });
-
         matched++;
       } else {
         unmatched.push(pickedName);
@@ -1495,8 +1324,7 @@ async function syncLiveScores() {
     renderScoreEntry();
     renderLeaderboard();
 
-    const msg = `<span style="color:#4caf50;">✓ Synced ${matched} golfer${matched !== 1 ? 's' : ''} from ${data.tournament} → ${MAJORS.find(m=>m.id===major)?.label}</span>`;
-    if (statusEl) statusEl.innerHTML = msg;
+    if (statusEl) statusEl.innerHTML = `<span style="color:#4caf50;">✓ Synced ${matched} golfer${matched !== 1 ? 's' : ''} from ${data.tournament} → ${MAJORS.find(m=>m.id===major)?.label}</span>`;
 
     if (unmatched.length && unmatchedEl) {
       unmatchedEl.innerHTML = `
@@ -1505,40 +1333,30 @@ async function syncLiveScores() {
           ${unmatched.map(n => `<div style="font-size:0.85rem;color:#f0f0f0;padding:2px 0;">• ${n}</div>`).join('')}
         </div>`;
     }
-
   } catch(err) {
     if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ Sync failed: ${err.message}</span>`;
   }
 }
 
 function renderScoreEntry() {
-  renderActiveScoringSelector();
   const major = document.getElementById('score-major-select').value;
   const golfers = state.golfers[major];
   const scores = state.scores[major];
   const worst = state.worstRounds[major];
   const picks = state.picks[major];
-
   const usedNames = new Set();
   Object.values(picks || {}).forEach(d => {
     (d.golfers || []).forEach(g => usedNames.add(g.name));
     if (d.amateur) usedNames.add(d.amateur.name);
   });
-
   const activeGolfers = golfers.filter(g => usedNames.has(g.name));
   const container = document.getElementById('score-entry-container');
-
-  if (!activeGolfers.length) {
-    container.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No picks submitted for this major yet</div>';
-    return;
-  }
-
+  if (!activeGolfers.length) { container.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No picks submitted for this major yet</div>'; return; }
   const cutMap = {};
   Object.values(picks || {}).forEach(d => {
     (d.golfers || []).forEach(g => { if (g.cut) cutMap[g.name] = true; });
     if (d.amateur?.cut) cutMap[d.amateur.name] = true;
   });
-
   container.innerHTML = `
     <div class="score-row" style="font-weight:500;">
       <div class="col-header" style="text-align:left;">Golfer</div>
@@ -1554,32 +1372,23 @@ function renderScoreEntry() {
         <input type="checkbox" data-golfer="${g.name}" data-field="cut" ${cutMap[g.name] ? 'checked' : ''} style="accent-color:var(--red);width:18px;height:18px;cursor:pointer;">
         <input class="score-tiny" data-field="sat" type="number" placeholder="0" value="${worst.sat ?? ''}" ${activeGolfers.indexOf(g) === 0 ? '' : 'style="visibility:hidden;"'}>
         <input class="score-tiny" data-field="sun" type="number" placeholder="0" value="${worst.sun ?? ''}" ${activeGolfers.indexOf(g) === 0 ? '' : 'style="visibility:hidden;"'}>
-      </div>`
-    ).join('')}
-    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-top:8px;">Worst Sat/Sun rounds apply to all cut golfers. Enter once (top row).</div>
-  `;
+      </div>`).join('')}
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-top:8px;">Worst Sat/Sun rounds apply to all cut golfers. Enter once (top row).</div>`;
 }
 
 function saveScores() {
   const major = document.getElementById('score-major-select').value;
-
   if (state.lockedMajors?.[major]) {
     document.getElementById('score-msg').innerHTML = '<div class="msg error">⛔ This major is locked. Unlock it in the Lock Majors section to edit scores.</div>';
     setTimeout(() => document.getElementById('score-msg').innerHTML = '', 3000);
     return;
   }
-
   const container = document.getElementById('score-entry-container');
-
-  container.querySelectorAll('[data-field="score"]').forEach(input => {
-    state.scores[major][input.dataset.golfer] = input.value;
-  });
-
+  container.querySelectorAll('[data-field="score"]').forEach(input => { state.scores[major][input.dataset.golfer] = input.value; });
   const satInput = container.querySelector('[data-field="sat"]');
   const sunInput = container.querySelector('[data-field="sun"]');
   if (satInput) state.worstRounds[major].sat = satInput.value;
   if (sunInput) state.worstRounds[major].sun = sunInput.value;
-
   container.querySelectorAll('[data-field="cut"]').forEach(cb => {
     const name = cb.dataset.golfer;
     Object.values(state.picks[major] || {}).forEach(d => {
@@ -1588,7 +1397,6 @@ function saveScores() {
       if (d.amateur?.name === name) d.amateur.cut = cb.checked;
     });
   });
-
   saveState();
   document.getElementById('score-msg').innerHTML = '<div class="msg success">Scores saved ✓</div>';
   setTimeout(() => document.getElementById('score-msg').innerHTML = '', 2500);
