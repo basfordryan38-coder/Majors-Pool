@@ -7,196 +7,155 @@
 <title>The Majors Pool</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green-deep: #0f1f0f;
-    --green-mid: #1a3018;
-    --green-light: #2d5a28;
-    --gold: #f0c94a;
-    --gold-light: #f7dc7a;
-    --cream: #f0f0f0;
-    --cream-dark: #cccccc;
-    --white: #ffffff;
-    --text-dark: #0f1f0f;
-    --text-mid: #555555;
-    --red: #e05444;
-    --blue: #4a9fd4;
-  }
-
-- { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-background: #0f1f0f !important;
-background-color: #0f1f0f !important;
+:root {
+  --green-deep: #0f1f0f;
+  --green-light: #2d5a28;
+  --gold: #f0c94a;
+  --gold-light: #f7dc7a;
+  --cream: #f0f0f0;
+  --red: #e05444;
 }
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #0f1f0f !important; }
 body {
-background: #0f1f0f !important;
-color: var(–cream);
-font-family: ‘DM Sans’, sans-serif;
-min-height: 100vh;
-background-image:
-radial-gradient(ellipse at 20% 50%, rgba(45,74,45,0.6) 0%, transparent 60%),
-radial-gradient(ellipse at 80% 20%, rgba(61,107,61,0.3) 0%, transparent 50%),
-repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
-repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: #0f1f0f;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(45,74,45,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(61,107,61,0.3) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
 }
-
-header { text-align: center; padding: 48px 24px 32px; position: relative; border-bottom: 1px solid rgba(240,201,74,0.3); }
-.flag-pin { width: 3px; height: 32px; background: #f0c94a; position: relative; border-radius: 2px; }
-.flag-pin::before { content: ‘’; position: absolute; top: 0; left: 3px; width: 14px; height: 10px; background: #f0c94a; clip-path: polygon(0 0, 100% 50%, 0 100%); }
-h1 { font-family: ‘Playfair Display’, serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; color: #f0c94a !important; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 2px 20px rgba(240,201,74,0.4); }
-.subtitle { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.25em; color: rgba(240,201,74,0.7); text-transform: uppercase; margin-top: 8px; }
-
+header { text-align: center; padding: 48px 24px 32px; border-bottom: 1px solid rgba(240,201,74,0.3); }
+.flag-pin { width: 3px; height: 32px; background: #f0c94a; position: relative; border-radius: 2px; display: inline-block; margin: 0 4px; }
+.flag-pin::before { content: ''; position: absolute; top: 0; left: 3px; width: 14px; height: 10px; background: #f0c94a; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; color: #f0c94a !important; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 2px 20px rgba(240,201,74,0.4); }
+.subtitle { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.25em; color: rgba(240,201,74,0.7); text-transform: uppercase; margin-top: 8px; }
+#active-major-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; color: #f0c94a; margin-top: 10px; padding: 4px 14px; border: 1px solid rgba(240,201,74,0.3); border-radius: 20px; display: inline-block; }
 nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; flex-wrap: wrap; }
-.tab-btn { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(240,201,74,0.4); background: transparent; color: #f0c94a; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+.tab-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(240,201,74,0.4); background: transparent; color: #f0c94a; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
 .tab-btn:hover { border-color: #f0c94a; color: #f7dc7a; background: rgba(240,201,74,0.08); }
 .tab-btn.active { background: #f0c94a; color: #0f1f0f; border-color: #f0c94a; font-weight: 500; }
-
 .page { display: none; padding: 32px 16px 64px; max-width: 960px; margin: 0 auto; animation: fadeIn 0.3s ease; }
 .page.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-.section-title { font-family: ‘Playfair Display’, serif; font-size: 1.6rem; color: #f0c94a !important; margin-bottom: 6px; }
-.section-sub { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,201,74,0.6); margin-bottom: 24px; }
-
+.section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #f0c94a !important; margin-bottom: 6px; }
+.section-sub { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,201,74,0.6); margin-bottom: 24px; }
 .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(240,201,74,0.2); border-radius: 4px; padding: 24px; margin-bottom: 16px; }
-
-.leaderboard-major-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-.major-btn { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; border: 1px solid rgba(201,168,76,0.25); background: transparent; color: rgba(201,168,76,0.55); cursor: pointer; border-radius: 2px; transition: all 0.2s; }
-.major-btn.active { background: rgba(201,168,76,0.12); border-color: var(–gold); color: var(–gold); }
-
 .lb-table { width: 100%; border-collapse: collapse; }
-.lb-table th { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.lb-table th { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
 .lb-table td { padding: 14px 12px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
 .lb-table tr:hover td { background: rgba(201,168,76,0.04); }
-.rank-num { font-family: ‘Playfair Display’, serif; font-size: 1.4rem; color: rgba(201,168,76,0.3); font-weight: 700; line-height: 1; }
-.rank-1 .rank-num { color: var(–gold); }
+.rank-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: rgba(201,168,76,0.3); font-weight: 700; line-height: 1; }
+.rank-1 .rank-num { color: var(--gold); }
 .rank-2 .rank-num { color: rgba(201,168,76,0.7); }
 .rank-3 .rank-num { color: rgba(201,168,76,0.5); }
-.player-name-lb { font-family: ‘Playfair Display’, serif; font-size: 1rem; color: #ffffff; }
+.player-name-lb { font-family: 'Playfair Display', serif; font-size: 1rem; color: #ffffff; }
 .golfer-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-.gtag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; padding: 2px 6px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); letter-spacing: 0.05em; }
+.gtag { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 2px 6px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); letter-spacing: 0.05em; }
 .gtag.cut { background: rgba(192,57,43,0.15); color: rgba(192,57,43,0.8); }
 .gtag.amateur { background: rgba(36,113,163,0.2); color: rgba(100,180,220,0.9); }
-.score-cell { font-family: ‘DM Mono’, monospace; font-size: 1.1rem; font-weight: 500; text-align: right; }
+.score-cell { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 500; text-align: right; }
 .score-under { color: #e74c3c; }
-.score-over { color: var(–cream); }
+.score-over { color: var(--cream); }
 .score-even { color: rgba(201,168,76,0.8); }
-.score-pending { font-family: ‘DM Mono’, monospace; font-size: 0.7rem; color: rgba(201,168,76,0.35); letter-spacing: 0.1em; }
-
+.score-pending { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(201,168,76,0.35); letter-spacing: 0.1em; }
+.teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.team-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 20px; }
+.team-card:hover { border-color: rgba(201,168,76,0.3); }
+.team-card-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #ffffff; margin-bottom: 4px; }
+.team-card-major { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.4); margin-bottom: 14px; }
+.team-golfer-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.85rem; }
+.team-golfer-item:last-child { border-bottom: none; }
+.tgi-name { color: var(--cream); }
+.tgi-score { font-family: 'DM Mono', monospace; font-size: 0.8rem; }
 .builder-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 640px) { .builder-layout { grid-template-columns: 1fr; } }
 .budget-meter { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
-.budget-label { font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.55); }
-.budget-val { font-family: ‘Playfair Display’, serif; font-size: 1.8rem; color: var(–gold); line-height: 1; }
+.budget-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.55); }
+.budget-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
 .budget-bar-wrap { flex: 1; margin: 0 20px; }
 .budget-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-.budget-fill { height: 100%; background: linear-gradient(90deg, var(–green-light), var(–gold)); border-radius: 2px; transition: width 0.3s ease; }
+.budget-fill { height: 100%; background: linear-gradient(90deg, var(--green-light), var(--gold)); border-radius: 2px; transition: width 0.3s ease; }
 .budget-fill.danger { background: linear-gradient(90deg, #c0392b, #e74c3c); }
 .golfer-list { display: flex; flex-direction: column; gap: 6px; max-height: 480px; overflow-y: auto; padding-right: 4px; }
 .golfer-list::-webkit-scrollbar { width: 3px; }
-.golfer-list::-webkit-scrollbar-track { background: transparent; }
 .golfer-list::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
 .golfer-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid rgba(201,168,76,0.1); border-radius: 3px; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.02); }
 .golfer-row:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.05); }
-.golfer-row.selected { border-color: var(–gold); background: rgba(201,168,76,0.1); }
+.golfer-row.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); }
 .golfer-row.disabled { opacity: 0.35; cursor: not-allowed; }
-.golfer-row-name { font-size: 0.9rem; color: var(–cream); }
-.golfer-row-rank { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); margin-top: 2px; }
-.cost-badge { font-family: ‘DM Mono’, monospace; font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 2px; background: rgba(201,168,76,0.15); color: var(–gold-light); min-width: 32px; text-align: center; }
+.golfer-row-name { font-size: 0.9rem; color: var(--cream); }
+.golfer-row-rank { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); margin-top: 2px; }
+.cost-badge { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 2px; background: rgba(201,168,76,0.15); color: var(--gold-light); min-width: 32px; text-align: center; }
 .cost-badge.c5 { background: rgba(201,168,76,0.25); }
 .cost-badge.c1 { background: rgba(255,255,255,0.06); color: rgba(201,168,76,0.5); }
-.team-slot { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px dashed rgba(201,168,76,0.2); border-radius: 3px; margin-bottom: 8px; min-height: 52px; transition: all 0.2s; }
+.team-slot { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px dashed rgba(201,168,76,0.2); border-radius: 3px; margin-bottom: 8px; min-height: 52px; }
 .team-slot.filled { border-style: solid; border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.06); }
 .team-slot.amateur-slot { border-color: rgba(36,113,163,0.35); }
 .team-slot.amateur-slot.filled { background: rgba(36,113,163,0.08); border-color: rgba(36,113,163,0.5); }
-.slot-name { font-size: 0.9rem; color: var(–cream); }
-.slot-empty { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
-.remove-btn { background: transparent; border: none; color: rgba(192,57,43,0.6); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 2px; transition: color 0.15s; }
-.remove-btn:hover { color: var(–red); }
-.submit-btn { width: 100%; padding: 14px; background: var(–gold); color: var(–green-deep); border: none; font-family: ‘DM Mono’, monospace; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; cursor: pointer; border-radius: 3px; margin-top: 12px; transition: all 0.2s; }
-.submit-btn:hover { background: var(–gold-light); transform: translateY(-1px); }
-.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-.teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.team-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 20px; transition: border-color 0.2s; }
-.team-card:hover { border-color: rgba(201,168,76,0.3); }
-.team-card-name { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; color: #ffffff; margin-bottom: 4px; }
-.team-card-major { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.4); margin-bottom: 14px; }
-.team-golfer-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.85rem; }
-.team-golfer-item:last-child { border-bottom: none; }
-.tgi-name { color: var(–cream); }
-.tgi-score { font-family: ‘DM Mono’, monospace; font-size: 0.8rem; }
-
-.rules-section { margin-bottom: 32px; }
-.rules-section h3 { font-family: ‘Playfair Display’, serif; font-size: 1.2rem; color: var(–gold); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(201,168,76,0.15); }
-.rules-section p, .rules-section li { font-size: 0.9rem; line-height: 1.7; color: rgba(245,240,232,0.8); margin-bottom: 8px; }
-.rules-section ul { padding-left: 20px; }
-.cost-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-.cost-table th { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
-.cost-table td { padding: 10px 12px; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(245,240,232,0.8); }
-.cost-table td:last-child { font-family: ‘DM Mono’, monospace; color: var(–gold); }
-
+.slot-name { font-size: 0.9rem; color: var(--cream); }
+.slot-empty { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
+.remove-btn { background: transparent; border: none; color: rgba(192,57,43,0.6); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 2px; }
+.remove-btn:hover { color: var(--red); }
+.submit-btn { width: 100%; padding: 14px; background: var(--gold); color: var(--green-deep); border: none; font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; cursor: pointer; border-radius: 3px; margin-top: 12px; transition: all 0.2s; }
+.submit-btn:hover { background: var(--gold-light); }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .comm-section { margin-bottom: 28px; }
-.comm-section h3 { font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 12px; }
+.comm-section h3 { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 12px; }
 .form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-.form-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.2); color: var(–cream); padding: 10px 14px; font-family: ‘DM Sans’, sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; transition: border-color 0.2s; }
-.form-input:focus { outline: none; border-color: var(–gold); }
+.form-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.2); color: var(--cream); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; }
+.form-input:focus { outline: none; border-color: var(--gold); }
 .form-input::placeholder { color: rgba(201,168,76,0.25); }
-.form-select { background: rgba(30,50,30,0.9); border: 1px solid rgba(201,168,76,0.2); color: var(–cream); padding: 10px 14px; font-family: ‘DM Sans’, sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; }
-.action-btn { padding: 10px 18px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(–gold); font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: all 0.15s; white-space: nowrap; }
+.form-select { background: rgba(30,50,30,0.9); border: 1px solid rgba(201,168,76,0.2); color: var(--cream); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; border-radius: 3px; flex: 1; min-width: 120px; }
+.action-btn { padding: 10px 18px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: all 0.15s; white-space: nowrap; }
 .action-btn:hover { background: rgba(201,168,76,0.25); }
 .action-btn.danger { border-color: rgba(192,57,43,0.4); color: rgba(192,57,43,0.8); background: rgba(192,57,43,0.08); }
 .action-btn.danger:hover { background: rgba(192,57,43,0.15); }
-.msg { font-family: ‘DM Mono’, monospace; font-size: 0.72rem; padding: 8px 12px; border-radius: 3px; margin-top: 8px; }
+.msg { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 8px 12px; border-radius: 3px; margin-top: 8px; }
 .msg.success { background: rgba(46,125,50,0.2); border: 1px solid rgba(46,125,50,0.4); color: #81c784; }
 .msg.error { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e57373; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.removable-tag { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; padding: 4px 10px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); border: 1px solid rgba(201,168,76,0.2); cursor: pointer; transition: all 0.15s; }
+.removable-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; padding: 4px 10px; border-radius: 2px; background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.7); border: 1px solid rgba(201,168,76,0.2); cursor: pointer; }
 .removable-tag:hover { background: rgba(192,57,43,0.15); color: #e57373; border-color: rgba(192,57,43,0.3); }
-
 .score-row { display: grid; grid-template-columns: 1fr repeat(4, 60px); gap: 6px; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.score-row-name { font-size: 0.88rem; color: var(–cream); }
-.score-tiny { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.15); color: var(–cream); padding: 6px; font-family: ‘DM Mono’, monospace; font-size: 0.8rem; text-align: center; border-radius: 3px; }
-.score-tiny:focus { outline: none; border-color: var(–gold); }
-.col-header { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.4); text-align: center; }
-.cut-toggle { display: flex; align-items: center; gap: 6px; font-family: ‘DM Mono’, monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); cursor: pointer; }
-.cut-toggle input { accent-color: var(–red); }
-
-.empty-state { text-align: center; padding: 48px 24px; font-family: ‘DM Mono’, monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
-.badge-amateur { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; padding: 2px 6px; background: rgba(36,113,163,0.2); color: rgba(100,180,220,0.8); border-radius: 2px; margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+.score-row-name { font-size: 0.88rem; color: var(--cream); }
+.score-tiny { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.15); color: var(--cream); padding: 6px; font-family: 'DM Mono', monospace; font-size: 0.8rem; text-align: center; border-radius: 3px; }
+.score-tiny:focus { outline: none; border-color: var(--gold); }
+.col-header { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.4); text-align: center; }
+.cut-toggle { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(201,168,76,0.5); cursor: pointer; }
+.cut-toggle input { accent-color: var(--red); }
+.empty-state { text-align: center; padding: 48px 24px; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.25); }
+.badge-amateur { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 2px 6px; background: rgba(36,113,163,0.2); color: rgba(100,180,220,0.8); border-radius: 2px; margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
 .filter-row { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
-.filter-btn { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.2); background: transparent; color: rgba(201,168,76,0.45); cursor: pointer; border-radius: 2px; transition: all 0.15s; }
-.filter-btn.active { border-color: var(–gold); color: var(–gold); background: rgba(201,168,76,0.08); }
-.search-input { flex: 1; min-width: 140px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.15); color: var(–cream); padding: 6px 12px; font-family: ‘DM Sans’, sans-serif; font-size: 0.82rem; border-radius: 3px; }
+.filter-btn { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.2); background: transparent; color: rgba(201,168,76,0.45); cursor: pointer; border-radius: 2px; }
+.filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+.search-input { flex: 1; min-width: 140px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.15); color: var(--cream); padding: 6px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; border-radius: 3px; }
 .search-input:focus { outline: none; border-color: rgba(201,168,76,0.5); }
 .search-input::placeholder { color: rgba(201,168,76,0.2); }
-
-/* ── SYNC DIALOG ── */
-.dialog-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-.dialog-box { background: #1a3018; border: 1px solid rgba(240,201,74,0.4); border-radius: 6px; padding: 28px; min-width: 300px; max-width: 420px; width: 90%; }
-.dialog-title { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; color: #f0c94a; margin-bottom: 6px; }
-.dialog-sub { font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 18px; }
-.dialog-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.dialog-option { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid rgba(201,168,76,0.2); border-radius: 3px; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.02); }
-.dialog-option:hover:not(.locked-opt) { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
-.dialog-option.selected { border-color: #f0c94a; background: rgba(201,168,76,0.12); }
-.dialog-option.locked-opt { opacity: 0.45; cursor: not-allowed; }
-.dialog-option input[type=“radio”] { accent-color: #f0c94a; width: 16px; height: 16px; flex-shrink: 0; }
-.dialog-option-label { font-size: 0.9rem; color: var(–cream); flex: 1; }
-.dialog-option-locked { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; color: #e05444; }
-.dialog-btns { display: flex; gap: 8px; justify-content: flex-end; }
+.rules-section { margin-bottom: 32px; }
+.rules-section h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.rules-section p, .rules-section li { font-size: 0.9rem; line-height: 1.7; color: rgba(245,240,232,0.8); margin-bottom: 8px; }
+.rules-section ul { padding-left: 20px; }
+.cost-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.cost-table th { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.cost-table td { padding: 10px 12px; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(245,240,232,0.8); }
+.cost-table td:last-child { font-family: 'DM Mono', monospace; color: var(--gold); }
+.history-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+.history-table th { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.5); padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.history-table td { padding: 10px 12px; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--cream); }
+.history-major-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); margin: 24px 0 8px; }
 </style>
-
 </head>
 <body>
 
 <header>
-  <div class="flag-row">
-    <div class="flag-pin"></div><div class="flag-pin"></div><div class="flag-pin"></div>
-  </div>
+  <div><span class="flag-pin"></span><span class="flag-pin"></span><span class="flag-pin"></span></div>
   <h1>The Majors Pool</h1>
   <p class="subtitle">Masters · PGA Championship · U.S. Open · The Open</p>
+  <div id="active-major-badge">Loading…</div>
   <div id="sync-indicator" style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(201,168,76,0.4);margin-top:8px;transition:opacity 0.5s;opacity:0;">✓ Synced</div>
 </header>
 
@@ -205,66 +164,38 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
   <button class="tab-btn" onclick="showPage('teams')">Teams</button>
   <button class="tab-btn" onclick="showPage('picks')">Make Picks</button>
   <button class="tab-btn" onclick="showPage('rules')">Rules</button>
+  <button class="tab-btn" onclick="showPage('history')">History</button>
   <button class="tab-btn" onclick="showPage('commissioner')">Commissioner</button>
 </nav>
 
-<!-- ══ SYNC DIALOG ══ -->
-
-<div class="dialog-overlay" id="sync-dialog" style="display:none;">
-  <div class="dialog-box">
-    <div class="dialog-title">⛳ Sync Live Scores</div>
-    <div class="dialog-sub">Select tournament to sync</div>
-    <div class="dialog-options" id="sync-dialog-options"></div>
-    <div class="dialog-btns">
-      <button class="action-btn danger" onclick="closeSyncDialog()">Cancel</button>
-      <button class="action-btn" style="background:rgba(240,201,74,0.25);border-color:#f0c94a;" onclick="confirmSync()">Sync ✓</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ LEADERBOARD PAGE ══ -->
+<!-- LEADERBOARD -->
 
 <div id="page-leaderboard" class="page active">
   <p class="section-title">Leaderboard</p>
-  <p class="section-sub">Live standings by major</p>
-  <div class="leaderboard-major-selector" id="lb-major-selector"></div>
+  <p class="section-sub" id="lb-sub">Live standings</p>
   <div style="margin-bottom:16px;">
-    <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="openSyncDialog('lb-sync-status')">⛳ Sync Live Scores</button>
-    <button class="action-btn" style="font-size:0.62rem;" onclick="alert(JSON.stringify(state.scores.pga))">🔍 Debug Scores</button>
-    <button class="action-btn" style="font-size:0.62rem;" onclick="fetch('https://majors-pool-e5f7b-default-rtdb.firebaseio.com/pool/scores/pga.json').then(r=>r.json()).then(d=>alert(JSON.stringify(d)))">🔍 Debug Firebase</button>
+    <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="syncLiveScores()">⛳ Sync Live Scores</button>
     <div id="lb-sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-top:8px;"></div>
   </div>
-  <div class="card" id="lb-container">
-    <div class="empty-state">No picks submitted yet</div>
-  </div>
+  <div class="card" id="lb-container"><div class="empty-state">No picks submitted yet</div></div>
 </div>
 
-<!-- ══ TEAMS PAGE ══ -->
+<!-- TEAMS -->
 
 <div id="page-teams" class="page">
   <p class="section-title">All Teams</p>
-  <p class="section-sub">Submitted rosters by major</p>
-  <div class="leaderboard-major-selector" id="teams-major-selector"></div>
-  <div class="teams-grid" id="teams-grid">
-    <div class="empty-state">No picks submitted yet</div>
-  </div>
+  <p class="section-sub" id="teams-sub">Submitted rosters</p>
+  <div class="teams-grid" id="teams-grid"><div class="empty-state">No picks submitted yet</div></div>
 </div>
 
-<!-- ══ PICKS PAGE ══ -->
+<!-- PICKS -->
 
 <div id="page-picks" class="page">
   <p class="section-title">Make Your Picks</p>
-  <p class="section-sub">Build your team for the selected major</p>
+  <p class="section-sub" id="picks-sub">Build your team</p>
   <div class="card" style="margin-bottom:20px;">
     <div class="form-row">
       <select class="form-select" id="pick-player-select"><option value="">Select your name…</option></select>
-      <select class="form-select" id="pick-major-select">
-        <option value="">Select major…</option>
-        <option value="masters">The Masters</option>
-        <option value="pga">PGA Championship</option>
-        <option value="usopen">U.S. Open</option>
-        <option value="open">The Open Championship</option>
-      </select>
     </div>
   </div>
   <div id="pick-builder" style="display:none;">
@@ -312,7 +243,7 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
   </div>
 </div>
 
-<!-- ══ RULES PAGE ══ -->
+<!-- RULES -->
 
 <div id="page-rules" class="page">
   <p class="section-title">Rulebook</p>
@@ -350,34 +281,74 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
     </div>
     <div class="rules-section">
       <h3>Cut Penalty</h3>
-      <p>If one of your golfers misses the cut, they do not stop scoring — they are penalized as follows:</p>
+      <p>If one of your golfers misses the cut, they are penalized as follows:</p>
       <ul>
-        <li>Take the <strong>worst round score on Saturday</strong> (from all players that day) and add it to your golfer's total.</li>
+        <li>Take the <strong>worst round score on Saturday</strong> and add it to your golfer's total.</li>
         <li>Take the <strong>worst round score on Sunday</strong> and add it again.</li>
       </ul>
-      <p><em>Example: Your golfer is cut at +2. Saturday's worst round is +3, Sunday's worst is +5. Your golfer's final score is +2 + 3 + 5 = +10.</em></p>
+      <p><em>Example: Your golfer is cut at +2. Saturday's worst is +3, Sunday's worst is +5. Final score: +10.</em></p>
     </div>
     <div class="rules-section">
       <h3>U.S. Open Amateur Pick</h3>
-      <p>For the U.S. Open only, each player gets one <strong>free amateur pick</strong> (does not cost any points).</p>
+      <p>For the U.S. Open only, each player gets one <strong>free amateur pick</strong>.</p>
       <ul>
-        <li>If the amateur misses the cut: <strong>no penalty</strong>. The pick is simply ignored.</li>
-        <li>If the amateur makes the cut: your team automatically receives <strong>−3 strokes</strong>.</li>
+        <li>If the amateur misses the cut: <strong>no penalty</strong>.</li>
+        <li>If the amateur makes the cut: your team receives <strong>−3 strokes</strong>.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ══ COMMISSIONER PAGE ══ -->
+<!-- HISTORY -->
+
+<div id="page-history" class="page">
+  <p class="section-title">History</p>
+  <p class="section-sub">Past major results</p>
+  <div id="history-container"><div class="empty-state">No history recorded yet</div></div>
+</div>
+
+<!-- COMMISSIONER -->
 
 <div id="page-commissioner" class="page">
   <p class="section-title">Commissioner</p>
-  <p class="section-sub">Manage players, golfers, and scores</p>
-
+  <p class="section-sub">Manage the pool</p>
   <div style="background:rgba(224,84,68,0.1);border:1px solid rgba(224,84,68,0.4);border-radius:4px;padding:16px 20px;margin-bottom:24px;text-align:center;">
     <div style="font-family:'Playfair Display',serif;font-size:1rem;color:#e05444;margin-bottom:4px;">⛳ In the name of Edgar Sketch ⛳</div>
     <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:rgba(224,84,68,0.8);">DO NOT TOUCH THIS PAGE UNLESS YOU ARE NAMED RYAN.</div>
   </div>
+
+  <!-- Active Major -->
+
+  <div class="card comm-section">
+    <h3>Active Major</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:12px;line-height:1.6;">This sets which tournament is live. Picks, scores, and leaderboard all refer to this major.</div>
+    <div class="form-row">
+      <select class="form-select" id="active-major-select">
+        <option value="masters">The Masters</option>
+        <option value="pga" selected>PGA Championship</option>
+        <option value="usopen">U.S. Open</option>
+        <option value="open">The Open Championship</option>
+      </select>
+      <button class="action-btn" onclick="saveActiveMajor()">Set Active Major</button>
+    </div>
+    <div id="active-major-msg"></div>
+  </div>
+
+  <!-- Pick Deadline -->
+
+  <div class="card comm-section">
+    <h3>Pick Deadline</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:12px;line-height:1.6;">Picks lock at this time. Leave blank for no deadline.</div>
+    <div class="form-row">
+      <input type="datetime-local" class="form-input" id="deadline-input" style="font-family:'DM Mono',monospace;font-size:0.8rem;">
+      <button class="action-btn" onclick="saveDeadline()">Save Deadline</button>
+      <button class="action-btn danger" onclick="clearDeadline()">Clear</button>
+    </div>
+    <div id="deadline-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-top:8px;color:rgba(201,168,76,0.5);"></div>
+    <div id="deadline-msg"></div>
+  </div>
+
+  <!-- Pool Players -->
 
   <div class="card comm-section">
     <h3>Pool Players</h3>
@@ -389,36 +360,27 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
     <div id="player-msg"></div>
   </div>
 
+  <!-- Golfer Roster -->
+
   <div class="card comm-section">
-    <h3>Golfer Roster (WGR for Selected Major)</h3>
-    <div class="form-row">
-      <select class="form-select" id="roster-major-select" onchange="renderRosterList()">
-        <option value="masters">The Masters</option>
-        <option value="pga">PGA Championship</option>
-        <option value="usopen">U.S. Open</option>
-        <option value="open">The Open Championship</option>
-      </select>
+    <h3>Golfer Roster</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-bottom:8px;line-height:1.6;">
+      Paste one golfer per line:<br>
+      &nbsp;&nbsp;Scottie Scheffler, 1&nbsp;&nbsp;&nbsp;1. Scottie Scheffler&nbsp;&nbsp;&nbsp;Scottie Scheffler 1<br>
+      Add "amateur" anywhere on the line to mark as amateur.
     </div>
-    <div style="margin-bottom:16px;">
-      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Bulk Import</div>
-      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-bottom:8px;line-height:1.6;">
-        Paste one golfer per line. Accepted formats:<br>
-        &nbsp;&nbsp;Scottie Scheffler, 1&nbsp;&nbsp;&nbsp;&nbsp;1. Scottie Scheffler&nbsp;&nbsp;&nbsp;&nbsp;Scottie Scheffler 1<br>
-        For amateurs, add "amateur" anywhere on the line.
-      </div>
-      <textarea id="bulk-import-text" class="form-input" rows="8" placeholder="Scottie Scheffler, 1&#10;Rory McIlroy, 2&#10;..." style="width:100%;resize:vertical;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:1.6;"></textarea>
-      <div class="form-row" style="margin-top:8px;">
-        <button class="action-btn" onclick="bulkImport(false)">Preview Import</button>
-        <button class="action-btn" style="background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Import All</button>
-        <button class="action-btn danger" onclick="clearRoster()">Clear Roster</button>
-      </div>
-      <div id="bulk-preview" style="margin-top:10px;"></div>
+    <textarea id="bulk-import-text" class="form-input" rows="8" placeholder="Scottie Scheffler, 1&#10;Rory McIlroy, 2&#10;..." style="width:100%;resize:vertical;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:1.6;"></textarea>
+    <div class="form-row" style="margin-top:8px;">
+      <button class="action-btn" onclick="bulkImport(false)">Preview</button>
+      <button class="action-btn" style="background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Import All</button>
+      <button class="action-btn danger" onclick="clearRoster()">Clear Roster</button>
     </div>
+    <div id="bulk-preview" style="margin-top:10px;"></div>
     <hr style="border:none;border-top:1px solid rgba(201,168,76,0.1);margin:16px 0;">
     <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Add Single Golfer</div>
     <div class="form-row">
       <input class="form-input" id="new-golfer-name" placeholder="Golfer name…">
-      <input class="form-input" id="new-golfer-rank" placeholder="WGR rank (e.g. 5)" type="number" min="1" style="max-width:140px;">
+      <input class="form-input" id="new-golfer-rank" placeholder="WGR rank" type="number" min="1" style="max-width:140px;">
       <label class="cut-toggle"><input type="checkbox" id="new-golfer-amateur"> Amateur</label>
       <button class="action-btn" onclick="addGolfer()">Add</button>
     </div>
@@ -427,16 +389,12 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
     <div class="golfer-list" id="roster-list" style="max-height:300px;margin-top:4px;"></div>
   </div>
 
+  <!-- Score Entry -->
+
   <div class="card comm-section">
     <h3>Score Entry</h3>
     <div class="form-row" style="margin-bottom:16px;">
-      <select class="form-select" id="score-major-select" onchange="renderScoreEntry()">
-        <option value="masters">The Masters</option>
-        <option value="pga">PGA Championship</option>
-        <option value="usopen">U.S. Open</option>
-        <option value="open">The Open Championship</option>
-      </select>
-      <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="openSyncDialog('sync-status')">⛳ Sync Live Scores</button>
+      <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="syncLiveScores()">⛳ Sync Live Scores</button>
     </div>
     <div id="sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-bottom:12px;"></div>
     <div id="unmatched-container"></div>
@@ -445,55 +403,49 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
     <div id="score-msg"></div>
   </div>
 
-  <div class="card comm-section">
-    <h3>Pick Deadlines</h3>
-    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">
-      Picks lock automatically at the default tee time. Override below to set a custom cutoff.
-    </div>
-    <div id="deadline-rows"></div>
-    <button class="action-btn" style="margin-top:12px;" onclick="saveDeadlines()">Save Deadlines</button>
-    <div id="deadline-msg"></div>
-  </div>
+  <!-- Lock -->
 
   <div class="card comm-section">
-    <h3>Lock Majors</h3>
-    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">
-      Lock a major to prevent score edits and syncs. Use once a tournament is complete.
-    </div>
-    <div id="lock-major-list"></div>
+    <h3>Lock Scores</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">Lock to prevent further score edits once the tournament is complete.</div>
+    <div id="lock-status" style="font-family:'DM Mono',monospace;font-size:0.72rem;margin-bottom:12px;"></div>
+    <button class="action-btn" id="lock-btn" onclick="toggleLock()">Lock Scores</button>
   </div>
+
+  <!-- History Entry -->
+
+  <div class="card comm-section">
+    <h3>Save to History</h3>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-bottom:14px;line-height:1.6;">Once a tournament is complete, archive the final standings to the History tab.</div>
+    <button class="action-btn" onclick="archiveToHistory()">Archive Current Results</button>
+    <div id="archive-msg"></div>
+  </div>
+
+  <!-- Danger Zone -->
 
   <div class="card comm-section">
     <h3>Danger Zone</h3>
-    <div class="form-row">
-      <select class="form-select" id="reset-major-select">
-        <option value="masters">The Masters</option>
-        <option value="pga">PGA Championship</option>
-        <option value="usopen">U.S. Open</option>
-        <option value="open">The Open Championship</option>
-      </select>
-      <button class="action-btn danger" onclick="resetMajor()">Clear All Picks for This Major</button>
-    </div>
+    <button class="action-btn danger" onclick="resetTournament()">Reset Current Tournament</button>
     <button class="action-btn danger" style="margin-top:8px;" onclick="resetAll()">Reset Everything</button>
   </div>
 </div>
 
 <script>
 // ══════════════════════════════════════════
-//  CONSTANTS & STATE
+//  CONSTANTS
 // ══════════════════════════════════════════
-const MAJORS = [
-  { id: 'masters', label: 'The Masters',           defaultDeadline: '2026-04-09T08:00:00-04:00' },
-  { id: 'pga',     label: 'PGA Championship',      defaultDeadline: '2026-05-14T08:00:00-04:00' },
-  { id: 'usopen',  label: 'U.S. Open',             defaultDeadline: '2026-06-18T08:00:00-04:00' },
-  { id: 'open',    label: 'The Open Championship', defaultDeadline: '2026-07-16T06:35:00+01:00' },
-];
+const MAJOR_LABELS = {
+  masters: 'The Masters',
+  pga: 'PGA Championship',
+  usopen: 'U.S. Open',
+  open: 'The Open Championship'
+};
 
 const COST_TIERS = [
-  { max: 10,       cost: 5 },
-  { max: 30,       cost: 4 },
-  { max: 70,       cost: 3 },
-  { max: 125,      cost: 2 },
+  { max: 10, cost: 5 },
+  { max: 30, cost: 4 },
+  { max: 70, cost: 3 },
+  { max: 125, cost: 2 },
   { max: Infinity, cost: 1 },
 ];
 
@@ -502,233 +454,124 @@ function getCost(rank) {
   return 1;
 }
 
-function defaultState() {
-  return {
-    players: ['Ryan', 'Ross', 'Eddie', 'Sam', 'Nathan', 'Alex'],
-    golfers: { masters: [], pga: [], usopen: [], open: [] },
-    picks:   { masters: {}, pga: {}, usopen: {}, open: {} },
-    scores:  { masters: {}, pga: {}, usopen: {}, open: {} },
-    worstRounds: { masters: {}, pga: {}, usopen: {}, open: {} },
-    deadlines: {},
-    lockedMajors: {},
-  };
-}
-
-let state = defaultState();
-let activeLbMajor = 'pga';
-let activeTeamsMajor = 'pga';
-let currentTierFilter = 'all';
-let pickMajor = null;
-let pickPlayer = null;
-let selectedGolfers = [];
-let selectedAmateur = null;
-let syncStatusTarget = 'sync-status';
-let isSyncing = false;
-
 // ══════════════════════════════════════════
-//  SYNC DIALOG
+//  FIREBASE — simple direct reads/writes
 // ══════════════════════════════════════════
-function openSyncDialog(statusTargetId) {
-  syncStatusTarget = statusTargetId;
-  const opts = document.getElementById('sync-dialog-options');
-  opts.innerHTML = MAJORS.map(m => {
-    const locked = state.lockedMajors?.[m.id];
-    return `<label class="dialog-option${locked ? ' locked-opt' : ''}" id="dialog-opt-${m.id}">
-      <input type="radio" name="sync-major" value="${m.id}" ${locked ? 'disabled' : ''}>
-      <span class="dialog-option-label">${m.label}</span>
-      ${locked ? '<span class="dialog-option-locked">⛔ Locked</span>' : ''}
-    </label>`;
-  }).join('');
-
-  const firstUnlocked = MAJORS.find(m => !state.lockedMajors?.[m.id]);
-  if (firstUnlocked) {
-    const radio = opts.querySelector(`input[value="${firstUnlocked.id}"]`);
-    if (radio) {
-      radio.checked = true;
-      document.getElementById(`dialog-opt-${firstUnlocked.id}`).classList.add('selected');
-    }
-  }
-
-  opts.querySelectorAll('input[type="radio"]').forEach(r => {
-    r.addEventListener('change', () => {
-      opts.querySelectorAll('.dialog-option').forEach(o => o.classList.remove('selected'));
-      r.closest('.dialog-option').classList.add('selected');
-    });
-  });
-
-  document.getElementById('sync-dialog').style.display = 'flex';
-}
-
-function closeSyncDialog() {
-  document.getElementById('sync-dialog').style.display = 'none';
-}
-
-async function confirmSync() {
-  const selected = document.querySelector('input[name="sync-major"]:checked');
-  if (!selected) { alert('Please select a major.'); return; }
-  closeSyncDialog();
-  await syncLiveScores(selected.value);
-}
-
-// ══════════════════════════════════════════
-//  DEADLINE HELPERS
-// ══════════════════════════════════════════
-function getDeadline(majorId) {
-  const major = MAJORS.find(m => m.id === majorId);
-  const override = state.deadlines?.[majorId];
-  if (override) return new Date(override);
-  return new Date(major.defaultDeadline);
-}
-
-function isLocked(majorId) {
-  return new Date() >= getDeadline(majorId);
-}
-
-function formatDeadline(majorId) {
-  const d = getDeadline(majorId);
-  return d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-}
-
-function renderDeadlineRows() {
-  const container = document.getElementById('deadline-rows');
-  if (!container) return;
-  container.innerHTML = MAJORS.map(m => {
-    const locked = isLocked(m.id);
-    const override = state.deadlines?.[m.id] || '';
-    let inputVal = '';
-    if (override) {
-      const d = new Date(override);
-      const pad = n => String(n).padStart(2, '0');
-      inputVal = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-    }
-    return `<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
-      <div>
-        <div style="font-size:0.88rem;color:#f0f0f0;">${m.label}</div>
-        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(240,201,74,0.45);margin-top:2px;">
-          Default: ${formatDeadline(m.id)} ${locked ? '· <span style="color:#e05444;">LOCKED</span>' : '· <span style="color:#4caf50;">OPEN</span>'}
-        </div>
-      </div>
-      <input type="datetime-local" class="form-input" id="deadline-${m.id}" value="${inputVal}" style="max-width:200px;font-family:'DM Mono',monospace;font-size:0.72rem;">
-      <button class="action-btn danger" style="font-size:0.62rem;" onclick="clearDeadlineOverride('${m.id}')">Clear</button>
-    </div>`;
-  }).join('');
-}
-
-function clearDeadlineOverride(majorId) {
-  if (!state.deadlines) state.deadlines = {};
-  delete state.deadlines[majorId];
-  saveState();
-  renderDeadlineRows();
-}
-
-function saveDeadlines() {
-  if (!state.deadlines) state.deadlines = {};
-  MAJORS.forEach(m => {
-    const input = document.getElementById(`deadline-${m.id}`);
-    if (input && input.value) state.deadlines[m.id] = new Date(input.value).toISOString();
-  });
-  saveState();
-  renderDeadlineRows();
-  document.getElementById('deadline-msg').innerHTML = '<div class="msg success">Deadlines saved ✓</div>';
-  setTimeout(() => document.getElementById('deadline-msg').innerHTML = '', 2500);
-}
-
-// ══════════════════════════════════════════
-//  LOCK MAJORS
-// ══════════════════════════════════════════
-function renderLockMajorList() {
-  const el = document.getElementById('lock-major-list');
-  if (!el) return;
-  el.innerHTML = MAJORS.map(m => {
-    const locked = state.lockedMajors?.[m.id];
-    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
-      '<div>' +
-        '<div style="font-size:0.88rem;color:#f0f0f0;">' + m.label + '</div>' +
-        '<div style="font-family:\'DM Mono\',monospace;font-size:0.62rem;margin-top:2px;color:' + (locked ? '#e05444' : '#4caf50') + ';">' +
-          (locked ? '⛔ Locked — scores & sync frozen' : '✓ Open — scores editable') +
-        '</div>' +
-      '</div>' +
-      '<button class="action-btn ' + (locked ? 'danger' : '') + '" onclick="toggleLockMajor(\'' + m.id + '\')">' +
-        (locked ? 'Unlock' : 'Lock') +
-      '</button>' +
-    '</div>';
-  }).join('');
-}
-
-function toggleLockMajor(id) {
-  if (!state.lockedMajors) state.lockedMajors = {};
-  const locked = state.lockedMajors[id];
-  const label = MAJORS.find(m => m.id === id).label;
-  if (locked) {
-    if (!confirm('Unlock ' + label + '? Scores and sync will be editable again.')) return;
-    delete state.lockedMajors[id];
-  } else {
-    if (!confirm('Lock ' + label + '? No further score edits or live syncs will be allowed.')) return;
-    state.lockedMajors[id] = true;
-  }
-  saveState();
-  renderLockMajorList();
-}
-
-// ══════════════════════════════════════════
-//  FIREBASE
-// ══════════════════════════════════════════
-const FIREBASE_URL = 'https://majors-pool-e5f7b-default-rtdb.firebaseio.com';
+const FB = 'https://majors-pool-e5f7b-default-rtdb.firebaseio.com';
 
 async function fbGet(path) {
-  const res = await fetch(`${FIREBASE_URL}/${path}.json`);
-  return res.ok ? res.json() : null;
+  const r = await fetch(`${FB}/${path}.json`);
+  return r.ok ? r.json() : null;
 }
 
 async function fbSet(path, data) {
-  await fetch(`${FIREBASE_URL}/${path}.json`, {
+  const r = await fetch(`${FB}/${path}.json`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
+  return r.ok;
 }
 
-let liveListeners = {};
-function fbListen(path, callback) {
-  if (liveListeners[path]) liveListeners[path].close();
-  const es = new EventSource(`${FIREBASE_URL}/${path}.json`);
-  es.addEventListener('put', e => { try { const d = JSON.parse(e.data); callback(d.data); } catch {} });
-  es.addEventListener('patch', e => { try { const d = JSON.parse(e.data); callback(null, d.data); } catch {} });
-  liveListeners[path] = es;
-  return es;
+async function fbPatch(path, data) {
+  const r = await fetch(`${FB}/${path}.json`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return r.ok;
 }
 
+// ══════════════════════════════════════════
+//  STATE — kept simple, loaded fresh each time
+// ══════════════════════════════════════════
+let state = {
+  activeMajor: 'pga',
+  players: ['Ryan', 'Ross', 'Eddie', 'Sam', 'Nathan', 'Alex'],
+  golfers: [],
+  picks: {},
+  scores: {},
+  worstRounds: { sat: '', sun: '' },
+  deadline: null,
+  locked: false,
+  history: []
+};
+
+let currentTierFilter = 'all';
+let pickPlayer = null;
+let selectedGolfers = [];
+let selectedAmateur = null;
+
+// ══════════════════════════════════════════
+//  LOAD & SAVE — each key stored separately
+// ══════════════════════════════════════════
 async function loadState() {
   showSyncIndicator('loading');
   try {
-    const remote = await fbGet('pool');
-    if (remote) {
-      const def = defaultState();
-      state = {
-        players: remote.players || def.players,
-        golfers: { ...def.golfers, ...(remote.golfers || {}) },
-        picks:   { ...def.picks,   ...(remote.picks   || {}) },
-        scores:  { ...def.scores,  ...(remote.scores  || {}) },
-        worstRounds: { ...def.worstRounds, ...(remote.worstRounds || {}) },
-        deadlines: remote.deadlines || {},
-        lockedMajors: remote.lockedMajors || {},
-      };
-    } else {
-      state = defaultState();
-      await fbSet('pool', state);
-    }
+    const [activeMajor, players, golfers, picks, scores, worstRounds, deadline, locked, history] = await Promise.all([
+      fbGet('activeMajor'),
+      fbGet('players'),
+      fbGet('golfers'),
+      fbGet('picks'),
+      fbGet('scores'),
+      fbGet('worstRounds'),
+      fbGet('deadline'),
+      fbGet('locked'),
+      fbGet('history')
+    ]);
+    if (activeMajor) state.activeMajor = activeMajor;
+    if (players) state.players = players;
+    if (golfers) state.golfers = golfers;
+    if (picks) state.picks = picks;
+    if (scores) state.scores = scores;
+    if (worstRounds) state.worstRounds = worstRounds;
+    if (deadline) state.deadline = deadline;
+    if (locked !== null) state.locked = locked;
+    if (history) state.history = history;
   } catch(e) {
-    console.warn('Firebase load failed, using defaults', e);
-    state = defaultState();
+    console.warn('Load failed', e);
   }
   hideSyncIndicator();
-  return state;
 }
 
-async function saveState() {
+async function saveScores() {
+  if (state.locked) {
+    document.getElementById('score-msg').innerHTML = '<div class="msg error">⛔ Scores are locked.</div>';
+    setTimeout(() => document.getElementById('score-msg').innerHTML = '', 3000);
+    return;
+  }
+  const container = document.getElementById('score-entry-container');
+  container.querySelectorAll('[data-field="score"]').forEach(input => {
+    state.scores[input.dataset.golfer] = input.value;
+  });
+  const satInput = container.querySelector('[data-field="sat"]');
+  const sunInput = container.querySelector('[data-field="sun"]');
+  if (satInput) state.worstRounds.sat = satInput.value;
+  if (sunInput) state.worstRounds.sun = sunInput.value;
+  container.querySelectorAll('[data-field="cut"]').forEach(cb => {
+    const name = cb.dataset.golfer;
+    Object.values(state.picks).forEach(d => {
+      const g = (d.golfers || []).find(x => x.name === name);
+      if (g) g.cut = cb.checked;
+      if (d.amateur?.name === name) d.amateur.cut = cb.checked;
+    });
+  });
+
   showSyncIndicator('saving');
-  try { await fbSet('pool', state); } catch(e) { console.warn('Firebase save failed', e); }
+  const [s1, s2, s3] = await Promise.all([
+    fbSet('scores', state.scores),
+    fbSet('worstRounds', state.worstRounds),
+    fbSet('picks', state.picks)
+  ]);
   hideSyncIndicator();
+
+  if (s1 && s2 && s3) {
+    document.getElementById('score-msg').innerHTML = '<div class="msg success">Scores saved ✓</div>';
+  } else {
+    document.getElementById('score-msg').innerHTML = '<div class="msg error">Save failed — check connection</div>';
+  }
+  setTimeout(() => document.getElementById('score-msg').innerHTML = '', 3000);
+  renderLeaderboard();
 }
 
 function showSyncIndicator(mode) {
@@ -737,50 +580,11 @@ function showSyncIndicator(mode) {
   el.textContent = mode === 'loading' ? '⟳ Loading…' : '⟳ Saving…';
   el.style.opacity = '1';
 }
-
 function hideSyncIndicator() {
   const el = document.getElementById('sync-indicator');
   if (!el) return;
   el.textContent = '✓ Synced';
-  setTimeout(() => { if(el) el.style.opacity = '0'; }, 1500);
-}
-
-function startLiveSync() {
-  fbListen('pool', (data) => {
-    if (isSyncing) return;
-    if (!data) return;
-    const def = defaultState();
-
-    // Merge scores: keep any local score that is non-empty,
-    // only overwrite with incoming data if local is missing
-    const mergedScores = {};
-    ['masters', 'pga', 'usopen', 'open'].forEach(id => {
-      const incoming = (data.scores || {})[id] || {};
-      const local = (state.scores || {})[id] || {};
-      mergedScores[id] = {};
-      // Start with incoming
-      Object.assign(mergedScores[id], incoming);
-      // Overwrite with local where local has a real value
-      Object.entries(local).forEach(([name, val]) => {
-        if (val !== undefined && val !== null && val !== '') {
-          mergedScores[id][name] = val;
-        }
-      });
-    });
-
-    state = {
-      players: data.players || def.players,
-      golfers: { ...def.golfers, ...(data.golfers || {}) },
-      picks:   { ...def.picks,   ...(data.picks   || {}) },
-      scores:  mergedScores,
-      worstRounds: { ...def.worstRounds, ...(data.worstRounds || {}) },
-      deadlines: data.deadlines || {},
-      lockedMajors: data.lockedMajors || {},
-    };
-    const activePage = document.querySelector('.page.active')?.id;
-    if (activePage === 'page-leaderboard') renderLeaderboard();
-    if (activePage === 'page-teams') renderTeams();
-  });
+  setTimeout(() => { el.style.opacity = '0'; }, 1500);
 }
 
 // ══════════════════════════════════════════
@@ -793,43 +597,30 @@ function showPage(id) {
   event.target.classList.add('active');
   if (id === 'leaderboard') renderLeaderboard();
   if (id === 'teams') renderTeams();
-  if (id === 'picks') initPickSelectors();
-  if (id === 'commissioner') { renderPlayerTags(); renderRosterList(); renderScoreEntry(); renderDeadlineRows(); renderLockMajorList(); }
+  if (id === 'picks') initPickBuilder();
+  if (id === 'history') renderHistory();
+  if (id === 'commissioner') { renderPlayerTags(); renderRosterList(); renderScoreEntry(); renderLockStatus(); renderDeadlineStatus(); }
 }
 
-// ══════════════════════════════════════════
-//  MAJOR SELECTORS
-// ══════════════════════════════════════════
-function buildMajorSelector(containerId, activeId, onClickFn) {
-  const el = document.getElementById(containerId);
-  el.innerHTML = MAJORS.map(m =>
-    `<button class="major-btn ${m.id === activeId ? 'active' : ''}" onclick="${onClickFn}('${m.id}', this)">${m.label}</button>`
-  ).join('');
-}
-
-function setLbMajor(id, btn) {
-  activeLbMajor = id;
-  document.querySelectorAll('#lb-major-selector .major-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderLeaderboard();
-}
-
-function setTeamsMajor(id, btn) {
-  activeTeamsMajor = id;
-  document.querySelectorAll('#teams-major-selector .major-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderTeams();
+function updateBadge() {
+  document.getElementById('active-major-badge').textContent = MAJOR_LABELS[state.activeMajor] || state.activeMajor;
+  const sub = MAJOR_LABELS[state.activeMajor] || '';
+  ['lb-sub','teams-sub','picks-sub'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = sub;
+  });
+  const sel = document.getElementById('active-major-select');
+  if (sel) sel.value = state.activeMajor;
 }
 
 // ══════════════════════════════════════════
 //  LEADERBOARD
 // ══════════════════════════════════════════
 function renderLeaderboard() {
-  buildMajorSelector('lb-major-selector', activeLbMajor, 'setLbMajor');
-  const picks = state.picks[activeLbMajor];
-  const scores = state.scores[activeLbMajor];
-  const worst = state.worstRounds[activeLbMajor];
-  const isUsOpen = activeLbMajor === 'usopen';
+  const picks = state.picks || {};
+  const scores = state.scores || {};
+  const worst = state.worstRounds || {};
+  const isUsOpen = state.activeMajor === 'usopen';
 
   if (!Object.keys(picks).length) {
     document.getElementById('lb-container').innerHTML = '<div class="empty-state">No picks for this major yet</div>';
@@ -843,7 +634,11 @@ function renderLeaderboard() {
 
     for (const g of golfers) {
       const sc = scores[g.name];
-      if (sc === undefined || sc === null || sc === '') { hasPending = true; golferDetails.push({ name: g.name, score: null, cut: g.cut }); continue; }
+      if (sc === undefined || sc === null || sc === '') {
+        hasPending = true;
+        golferDetails.push({ name: g.name, score: null, cut: g.cut });
+        continue;
+      }
       let s = parseFloat(sc);
       if (g.cut) s += parseFloat(worst.sat || 0) + parseFloat(worst.sun || 0);
       total += s;
@@ -856,7 +651,7 @@ function renderLeaderboard() {
       if (asc !== undefined && asc !== null && asc !== '') {
         const madeCut = !amateur.cut;
         if (madeCut) amateurBonus = -3;
-        amateurDetail = { name: amateur.name, madeCut, bonus: amateurBonus };
+        amateurDetail = { name: amateur.name, madeCut };
       } else {
         amateurDetail = { name: amateur.name, pending: true };
       }
@@ -874,11 +669,7 @@ function renderLeaderboard() {
 
   document.getElementById('lb-container').innerHTML = `
     <table class="lb-table">
-      <thead><tr>
-        <th style="width:40px;">#</th>
-        <th>Player</th>
-        <th style="text-align:right;">Score</th>
-      </tr></thead>
+      <thead><tr><th style="width:40px;">#</th><th>Player</th><th style="text-align:right;">Score</th></tr></thead>
       <tbody>
         ${rows.map((r, i) => {
           const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
@@ -887,16 +678,11 @@ function renderLeaderboard() {
             const sc = g.score !== null ? formatScore(g.score) : '–';
             return `<span class="gtag ${g.cut ? 'cut' : ''}">${g.name} ${sc}${g.cut ? ' ✂' : ''}</span>`;
           }).join('');
-          const aTag = r.amateurDetail ? `<span class="gtag amateur">${r.amateurDetail.name}${r.amateurDetail.pending ? ' –' : r.amateurDetail.madeCut ? ' −3 ★' : ' (cut, no pen)'}</span>` : '';
+          const aTag = r.amateurDetail ? `<span class="gtag amateur">${r.amateurDetail.name}${r.amateurDetail.pending ? ' –' : r.amateurDetail.madeCut ? ' −3 ★' : ' (cut)'}</span>` : '';
           return `<tr class="${rankClass}">
-            <td><span class="rank-num">${i + 1}</span></td>
-            <td>
-              <div class="player-name-lb">${r.player}</div>
-              <div class="golfer-tags">${tags}${aTag}</div>
-            </td>
-            <td class="score-cell">
-              ${r.hasPending ? '<span class="score-pending">LIVE</span>' : `<span class="${scoreClass}">${formatScore(r.total)}</span>`}
-            </td>
+            <td><span class="rank-num">${i+1}</span></td>
+            <td><div class="player-name-lb">${r.player}</div><div class="golfer-tags">${tags}${aTag}</div></td>
+            <td class="score-cell">${r.hasPending ? '<span class="score-pending">LIVE</span>' : `<span class="${scoreClass}">${formatScore(r.total)}</span>`}</td>
           </tr>`;
         }).join('')}
       </tbody>
@@ -909,20 +695,14 @@ function formatScore(s) {
 }
 
 // ══════════════════════════════════════════
-//  TEAMS VIEW
+//  TEAMS
 // ══════════════════════════════════════════
 function renderTeams() {
-  buildMajorSelector('teams-major-selector', activeTeamsMajor, 'setTeamsMajor');
-  const picks = state.picks[activeTeamsMajor];
-  const scores = state.scores[activeTeamsMajor];
-  const isUsOpen = activeTeamsMajor === 'usopen';
+  const picks = state.picks || {};
+  const scores = state.scores || {};
+  const isUsOpen = state.activeMajor === 'usopen';
   const grid = document.getElementById('teams-grid');
-
-  if (!Object.keys(picks).length) {
-    grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;">No teams for this major yet</div>';
-    return;
-  }
-
+  if (!Object.keys(picks).length) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;">No teams yet</div>'; return; }
   grid.innerHTML = Object.entries(picks).map(([player, data]) => {
     const golfers = data.golfers || [];
     const amateur = data.amateur || null;
@@ -930,18 +710,14 @@ function renderTeams() {
       const sc = scores[g.name];
       const scoreStr = (sc !== undefined && sc !== null && sc !== '') ? formatScore(parseFloat(sc)) : '–';
       return `<div class="team-golfer-item">
-        <span class="tgi-name">${g.name}${g.cut ? ' <span style="color:rgba(192,57,43,0.7);font-size:0.75rem;">✂ cut</span>' : ''}</span>
-        <span class="tgi-score ${parseFloat(sc) < 0 ? 'score-under' : parseFloat(sc) > 0 ? 'score-over' : 'score-even'}">${scoreStr}</span>
+        <span class="tgi-name">${g.name}${g.cut ? ' <span style="color:rgba(192,57,43,0.7);font-size:0.75rem;">✂</span>' : ''}</span>
+        <span class="tgi-score ${parseFloat(sc)<0?'score-under':parseFloat(sc)>0?'score-over':'score-even'}">${scoreStr}</span>
       </div>`;
     }).join('');
-    const amateurItem = (isUsOpen && amateur) ? `
-      <div class="team-golfer-item">
-        <span class="tgi-name">${amateur.name} <span class="badge-amateur">amateur</span></span>
-        <span class="tgi-score" style="color:rgba(100,180,220,0.8);">free</span>
-      </div>` : '';
+    const amateurItem = (isUsOpen && amateur) ? `<div class="team-golfer-item"><span class="tgi-name">${amateur.name}<span class="badge-amateur">amateur</span></span><span class="tgi-score" style="color:rgba(100,180,220,0.8);">free</span></div>` : '';
     return `<div class="team-card">
       <div class="team-card-name">${player}</div>
-      <div class="team-card-major">${MAJORS.find(m=>m.id===activeTeamsMajor)?.label}</div>
+      <div class="team-card-major">${MAJOR_LABELS[state.activeMajor]}</div>
       ${items}${amateurItem}
     </div>`;
   }).join('');
@@ -950,47 +726,45 @@ function renderTeams() {
 // ══════════════════════════════════════════
 //  PICK BUILDER
 // ══════════════════════════════════════════
-function initPickSelectors() {
+function initPickBuilder() {
   const ps = document.getElementById('pick-player-select');
   ps.innerHTML = '<option value="">Select your name…</option>' +
     state.players.map(p => `<option value="${p}">${p}</option>`).join('');
-  ps.onchange = onPickSelectionChange;
-  document.getElementById('pick-major-select').onchange = onPickSelectionChange;
+  ps.onchange = onPlayerChange;
+  document.getElementById('amateur-slot-wrap').style.display = state.activeMajor === 'usopen' ? 'block' : 'none';
 }
 
-function onPickSelectionChange() {
+function onPlayerChange() {
   pickPlayer = document.getElementById('pick-player-select').value;
-  pickMajor  = document.getElementById('pick-major-select').value;
-  if (pickPlayer && pickMajor) {
-    if (isLocked(pickMajor)) {
-      document.getElementById('pick-builder').style.display = 'none';
-      document.getElementById('pick-lock-msg').innerHTML = `
-        <div style="text-align:center;padding:32px;background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.3);border-radius:4px;margin-top:16px;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#e05444;margin-bottom:8px;">⛳ Picks Are Locked</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(224,84,68,0.7);">
-            The deadline for ${MAJORS.find(m=>m.id===pickMajor).label} has passed.<br>
-            Locked at: ${formatDeadline(pickMajor)}
-          </div>
-        </div>`;
-      return;
-    }
-    document.getElementById('pick-lock-msg').innerHTML = '';
-    selectedGolfers = [];
-    selectedAmateur = null;
-    const existing = state.picks[pickMajor]?.[pickPlayer];
-    if (existing) {
-      selectedGolfers = [...(existing.golfers || [])];
-      selectedAmateur = existing.amateur || null;
-    }
-    document.getElementById('pick-builder').style.display = 'block';
-    document.getElementById('amateur-slot-wrap').style.display = pickMajor === 'usopen' ? 'block' : 'none';
-    renderGolferList();
-    renderTeamSlots();
-    updateBudget();
-  } else {
+  if (!pickPlayer) { document.getElementById('pick-builder').style.display = 'none'; return; }
+
+  if (state.locked || isDeadlinePassed()) {
     document.getElementById('pick-builder').style.display = 'none';
-    document.getElementById('pick-lock-msg').innerHTML = '';
+    document.getElementById('pick-lock-msg').innerHTML = `
+      <div style="text-align:center;padding:32px;background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.3);border-radius:4px;margin-top:16px;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#e05444;margin-bottom:8px;">⛳ Picks Are Locked</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(224,84,68,0.7);">The deadline for ${MAJOR_LABELS[state.activeMajor]} has passed.</div>
+      </div>`;
+    return;
   }
+
+  document.getElementById('pick-lock-msg').innerHTML = '';
+  selectedGolfers = [];
+  selectedAmateur = null;
+  const existing = state.picks[pickPlayer];
+  if (existing) {
+    selectedGolfers = [...(existing.golfers || [])];
+    selectedAmateur = existing.amateur || null;
+  }
+  document.getElementById('pick-builder').style.display = 'block';
+  renderGolferList();
+  renderTeamSlots();
+  updateBudget();
+}
+
+function isDeadlinePassed() {
+  if (!state.deadline) return false;
+  return new Date() >= new Date(state.deadline);
 }
 
 function filterTier(tier, btn) {
@@ -1001,9 +775,8 @@ function filterTier(tier, btn) {
 }
 
 function renderGolferList() {
-  if (!pickMajor) return;
   const search = (document.getElementById('golfer-search')?.value || '').toLowerCase();
-  const allGolfers = state.golfers[pickMajor].filter(g => !g.amateur);
+  const allGolfers = (state.golfers || []).filter(g => !g.amateur);
   const container = document.getElementById('golfer-list');
   const filtered = allGolfers.filter(g => {
     const cost = getCost(g.rank);
@@ -1016,12 +789,8 @@ function renderGolferList() {
     const cost = getCost(g.rank);
     const isSelected = selectedGolfers.some(s => s.name === g.name);
     const disabled = !isSelected && (cost > getRemainingBudget() || selectedGolfers.length >= 5);
-    return `<div class="golfer-row ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}"
-      onclick="${disabled ? '' : `toggleGolfer('${g.name.replace(/'/g,"\\'")}', ${g.rank})`}">
-      <div>
-        <div class="golfer-row-name">${g.name}</div>
-        <div class="golfer-row-rank">WGR #${g.rank}</div>
-      </div>
+    return `<div class="golfer-row ${isSelected?'selected':''} ${disabled?'disabled':''}" onclick="${disabled?'':` toggleGolfer('${g.name.replace(/'/g,"\\'")}',${g.rank})`}">
+      <div><div class="golfer-row-name">${g.name}</div><div class="golfer-row-rank">WGR #${g.rank}</div></div>
       <span class="cost-badge c${cost}">${cost}pt</span>
     </div>`;
   }).join('');
@@ -1029,12 +798,10 @@ function renderGolferList() {
 
 function toggleGolfer(name, rank) {
   const idx = selectedGolfers.findIndex(g => g.name === name);
-  if (idx >= 0) {
-    selectedGolfers.splice(idx, 1);
-  } else {
+  if (idx >= 0) { selectedGolfers.splice(idx, 1); }
+  else {
     if (selectedGolfers.length >= 5) return;
-    const cost = getCost(rank);
-    if (cost > getRemainingBudget()) return;
+    if (getCost(rank) > getRemainingBudget()) return;
     selectedGolfers.push({ name, rank, cut: false });
   }
   renderGolferList(); renderTeamSlots(); updateBudget();
@@ -1046,7 +813,7 @@ function getRemainingBudget() {
 
 function updateBudget() {
   const remaining = getRemainingBudget();
-  const pct = Math.min(100, ((15 - remaining) / 15) * 100);
+  const pct = Math.min(100, ((15-remaining)/15)*100);
   document.getElementById('budget-display').textContent = remaining;
   document.getElementById('count-display').textContent = `${selectedGolfers.length} / 5`;
   const bar = document.getElementById('budget-bar');
@@ -1062,14 +829,11 @@ function renderTeamSlots() {
     const g = selectedGolfers[i];
     if (g) {
       slots.push(`<div class="team-slot filled">
-        <div>
-          <div class="slot-name">${g.name}</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.45);">#${g.rank} · ${getCost(g.rank)}pt</div>
-        </div>
+        <div><div class="slot-name">${g.name}</div><div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.45);">#${g.rank} · ${getCost(g.rank)}pt</div></div>
         <button class="remove-btn" onclick="toggleGolfer('${g.name.replace(/'/g,"\\'")}',${g.rank})">✕</button>
       </div>`);
     } else {
-      slots.push(`<div class="team-slot"><span class="slot-empty">${i < 4 ? 'Required' : 'Optional'} pick ${i+1}</span></div>`);
+      slots.push(`<div class="team-slot"><span class="slot-empty">${i<4?'Required':'Optional'} pick ${i+1}</span></div>`);
     }
   }
   container.innerHTML = slots.join('');
@@ -1087,18 +851,15 @@ function renderTeamSlots() {
 
 function toggleAmateurList() {
   const list = document.getElementById('amateur-list');
-  const amateurs = state.golfers[pickMajor].filter(g => g.amateur);
+  const amateurs = (state.golfers || []).filter(g => g.amateur);
   if (list.style.display === 'none' || !list.style.display) {
     list.style.display = 'flex';
     list.innerHTML = amateurs.length ? amateurs.map(g =>
-      `<div class="golfer-row ${selectedAmateur?.name === g.name ? 'selected' : ''}" onclick="selectAmateur('${g.name.replace(/'/g,"\\'")}')">
+      `<div class="golfer-row ${selectedAmateur?.name===g.name?'selected':''}" onclick="selectAmateur('${g.name.replace(/'/g,"\\'")}')">
         <div><div class="golfer-row-name">${g.name}</div><div class="golfer-row-rank">Amateur</div></div>
         <span class="cost-badge" style="background:rgba(36,113,163,0.2);color:rgba(100,180,220,0.7);">free</span>
-      </div>`
-    ).join('') : '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No amateurs in roster</div>';
-  } else {
-    list.style.display = 'none';
-  }
+      </div>`).join('') : '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No amateurs in roster</div>';
+  } else { list.style.display = 'none'; }
 }
 
 function selectAmateur(name) {
@@ -1109,38 +870,146 @@ function selectAmateur(name) {
 
 function removeAmateur() { selectedAmateur = null; renderTeamSlots(); }
 
-function submitPicks() {
+async function submitPicks() {
   if (selectedGolfers.length < 4) return;
-  if (!state.picks[pickMajor]) state.picks[pickMajor] = {};
-  state.picks[pickMajor][pickPlayer] = {
-    golfers: selectedGolfers.map(g => ({ ...g })),
-    amateur: selectedAmateur ? { ...selectedAmateur } : null,
+  state.picks[pickPlayer] = {
+    golfers: selectedGolfers.map(g => ({...g})),
+    amateur: selectedAmateur ? {...selectedAmateur} : null
   };
-  saveState();
-  document.getElementById('pick-msg').innerHTML = '<div class="msg success">Team submitted! ✓</div>';
+  showSyncIndicator('saving');
+  const ok = await fbSet('picks', state.picks);
+  hideSyncIndicator();
+  document.getElementById('pick-msg').innerHTML = ok
+    ? '<div class="msg success">Team submitted! ✓</div>'
+    : '<div class="msg error">Save failed — try again</div>';
   setTimeout(() => document.getElementById('pick-msg').innerHTML = '', 3000);
+}
+
+// ══════════════════════════════════════════
+//  HISTORY
+// ══════════════════════════════════════════
+function renderHistory() {
+  const history = state.history || [];
+  const container = document.getElementById('history-container');
+  if (!history.length) { container.innerHTML = '<div class="empty-state">No history recorded yet</div>'; return; }
+  container.innerHTML = history.map(entry => `
+    <div class="history-major-title">${entry.majorLabel} ${entry.year}</div>
+    <table class="history-table">
+      <thead><tr><th>#</th><th>Player</th><th>Score</th></tr></thead>
+      <tbody>
+        ${entry.standings.map((s, i) => `<tr><td>${i+1}</td><td>${s.player}</td><td>${formatScore(s.total)}</td></tr>`).join('')}
+      </tbody>
+    </table>
+  `).join('');
+}
+
+async function archiveToHistory() {
+  const picks = state.picks || {};
+  const scores = state.scores || {};
+  const worst = state.worstRounds || {};
+  if (!Object.keys(picks).length) { document.getElementById('archive-msg').innerHTML = '<div class="msg error">No picks to archive</div>'; return; }
+
+  const standings = Object.entries(picks).map(([player, data]) => {
+    let total = 0;
+    (data.golfers || []).forEach(g => {
+      const sc = scores[g.name];
+      if (sc !== undefined && sc !== null && sc !== '') {
+        let s = parseFloat(sc);
+        if (g.cut) s += parseFloat(worst.sat||0) + parseFloat(worst.sun||0);
+        total += s;
+      }
+    });
+    return { player, total };
+  }).sort((a, b) => a.total - b.total);
+
+  const entry = {
+    majorLabel: MAJOR_LABELS[state.activeMajor],
+    year: new Date().getFullYear(),
+    standings
+  };
+
+  if (!state.history) state.history = [];
+  state.history.push(entry);
+  showSyncIndicator('saving');
+  const ok = await fbSet('history', state.history);
+  hideSyncIndicator();
+  document.getElementById('archive-msg').innerHTML = ok
+    ? '<div class="msg success">Archived ✓</div>'
+    : '<div class="msg error">Save failed</div>';
+  setTimeout(() => document.getElementById('archive-msg').innerHTML = '', 3000);
+}
+
+// ══════════════════════════════════════════
+//  COMMISSIONER — ACTIVE MAJOR
+// ══════════════════════════════════════════
+async function saveActiveMajor() {
+  const val = document.getElementById('active-major-select').value;
+  state.activeMajor = val;
+  showSyncIndicator('saving');
+  const ok = await fbSet('activeMajor', val);
+  hideSyncIndicator();
+  updateBadge();
+  document.getElementById('active-major-msg').innerHTML = ok
+    ? '<div class="msg success">Active major updated ✓</div>'
+    : '<div class="msg error">Save failed</div>';
+  setTimeout(() => document.getElementById('active-major-msg').innerHTML = '', 2500);
+}
+
+// ══════════════════════════════════════════
+//  COMMISSIONER — DEADLINE
+// ══════════════════════════════════════════
+async function saveDeadline() {
+  const val = document.getElementById('deadline-input').value;
+  if (!val) return;
+  state.deadline = new Date(val).toISOString();
+  showSyncIndicator('saving');
+  await fbSet('deadline', state.deadline);
+  hideSyncIndicator();
+  renderDeadlineStatus();
+  document.getElementById('deadline-msg').innerHTML = '<div class="msg success">Deadline saved ✓</div>';
+  setTimeout(() => document.getElementById('deadline-msg').innerHTML = '', 2500);
+}
+
+async function clearDeadline() {
+  state.deadline = null;
+  showSyncIndicator('saving');
+  await fbSet('deadline', null);
+  hideSyncIndicator();
+  document.getElementById('deadline-input').value = '';
+  renderDeadlineStatus();
+}
+
+function renderDeadlineStatus() {
+  const el = document.getElementById('deadline-status');
+  if (!state.deadline) { el.textContent = 'No deadline set — picks always open'; return; }
+  const d = new Date(state.deadline);
+  const passed = new Date() >= d;
+  el.innerHTML = `Deadline: ${d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'})} · <span style="color:${passed?'#e05444':'#4caf50'}">${passed?'LOCKED':'OPEN'}</span>`;
 }
 
 // ══════════════════════════════════════════
 //  COMMISSIONER — PLAYERS
 // ══════════════════════════════════════════
-function addPlayer() {
+async function addPlayer() {
   const input = document.getElementById('new-player-input');
   const name = input.value.trim();
-  if (!name) return;
-  if (state.players.includes(name)) { document.getElementById('player-msg').innerHTML = '<div class="msg error">Player already exists</div>'; return; }
+  if (!name || state.players.includes(name)) return;
   state.players.push(name);
-  saveState();
+  showSyncIndicator('saving');
+  await fbSet('players', state.players);
+  hideSyncIndicator();
   input.value = '';
   renderPlayerTags();
   document.getElementById('player-msg').innerHTML = '<div class="msg success">Player added ✓</div>';
   setTimeout(() => document.getElementById('player-msg').innerHTML = '', 2000);
 }
 
-function removePlayer(name) {
+async function removePlayer(name) {
   if (!confirm(`Remove ${name}?`)) return;
   state.players = state.players.filter(p => p !== name);
-  saveState();
+  showSyncIndicator('saving');
+  await fbSet('players', state.players);
+  hideSyncIndicator();
   renderPlayerTags();
 }
 
@@ -1154,16 +1023,18 @@ function renderPlayerTags() {
 // ══════════════════════════════════════════
 //  COMMISSIONER — GOLFERS
 // ══════════════════════════════════════════
-function addGolfer() {
+async function addGolfer() {
   const name = document.getElementById('new-golfer-name').value.trim();
   const rank = parseInt(document.getElementById('new-golfer-rank').value);
   const amateur = document.getElementById('new-golfer-amateur').checked;
-  const major = document.getElementById('roster-major-select').value;
   if (!name || (!amateur && !rank)) { document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Name and rank required</div>'; return; }
-  if (state.golfers[major].some(g => g.name.toLowerCase() === name.toLowerCase())) { document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Golfer already in roster</div>'; return; }
-  state.golfers[major].push({ name, rank: rank || 999, amateur });
-  state.golfers[major].sort((a,b) => a.rank - b.rank);
-  saveState();
+  if ((state.golfers||[]).some(g => g.name.toLowerCase()===name.toLowerCase())) { document.getElementById('golfer-msg').innerHTML = '<div class="msg error">Golfer already in roster</div>'; return; }
+  if (!state.golfers) state.golfers = [];
+  state.golfers.push({ name, rank: rank||999, amateur });
+  state.golfers.sort((a,b) => a.rank-b.rank);
+  showSyncIndicator('saving');
+  await fbSet('golfers', state.golfers);
+  hideSyncIndicator();
   document.getElementById('new-golfer-name').value = '';
   document.getElementById('new-golfer-rank').value = '';
   document.getElementById('new-golfer-amateur').checked = false;
@@ -1172,17 +1043,20 @@ function addGolfer() {
   setTimeout(() => document.getElementById('golfer-msg').innerHTML = '', 2000);
 }
 
-function removeGolfer(major, name) {
-  state.golfers[major] = state.golfers[major].filter(g => g.name !== name);
-  saveState();
+async function removeGolfer(name) {
+  state.golfers = (state.golfers||[]).filter(g => g.name !== name);
+  showSyncIndicator('saving');
+  await fbSet('golfers', state.golfers);
+  hideSyncIndicator();
   renderRosterList();
 }
 
-function clearRoster() {
-  const major = document.getElementById('roster-major-select').value;
-  if (!confirm(`Clear the entire ${MAJORS.find(m=>m.id===major).label} roster? This cannot be undone.`)) return;
-  state.golfers[major] = [];
-  saveState();
+async function clearRoster() {
+  if (!confirm('Clear the entire roster? This cannot be undone.')) return;
+  state.golfers = [];
+  showSyncIndicator('saving');
+  await fbSet('golfers', state.golfers);
+  hideSyncIndicator();
   renderRosterList();
   document.getElementById('bulk-preview').innerHTML = '';
 }
@@ -1191,7 +1065,7 @@ function parseBulkLine(line) {
   line = line.trim();
   if (!line) return null;
   const isAmateur = /amateur/i.test(line);
-  const cleaned = line.replace(/amateur/gi, '').trim();
+  const cleaned = line.replace(/amateur/gi,'').trim();
   let m = cleaned.match(/^(\d+)[.)]\s*(.+)$/);
   if (m) return { name: m[2].trim(), rank: parseInt(m[1]), amateur: isAmateur };
   m = cleaned.match(/^(.+?)[,\-–]\s*(\d+)\s*$/);
@@ -1204,8 +1078,7 @@ function parseBulkLine(line) {
   return null;
 }
 
-function bulkImport(doImport) {
-  const major = document.getElementById('roster-major-select').value;
+async function bulkImport(doImport) {
   const raw = document.getElementById('bulk-import-text').value;
   const lines = raw.split('\n');
   const preview = document.getElementById('bulk-preview');
@@ -1214,172 +1087,72 @@ function bulkImport(doImport) {
     if (!line.trim()) return;
     const result = parseBulkLine(line);
     if (!result) { errors.push(`Line ${i+1}: "${line}" — couldn't parse`); return; }
-    if (parsed.some(p => p.name.toLowerCase() === result.name.toLowerCase())) { dupes.push(result.name); return; }
+    if (parsed.some(p => p.name.toLowerCase()===result.name.toLowerCase())) { dupes.push(result.name); return; }
     parsed.push(result);
   });
   if (!doImport) {
     if (!parsed.length && !errors.length) { preview.innerHTML = ''; return; }
-    const rows = parsed.map(g =>
-      `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
-        <span style="font-size:0.85rem;color:var(--cream);">${g.name}${g.amateur ? '<span class="badge-amateur">amateur</span>' : ''}</span>
-        <span style="font-family:DM Mono;font-size:0.7rem;color:var(--gold);">${g.amateur ? 'free' : `#${g.rank} · ${getCost(g.rank)}pt`}</span>
-      </div>`).join('');
+    const rows = parsed.map(g => `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span style="font-size:0.85rem;color:var(--cream);">${g.name}${g.amateur?'<span class="badge-amateur">am</span>':''}</span>
+      <span style="font-family:DM Mono;font-size:0.7rem;color:var(--gold);">${g.amateur?'free':`#${g.rank} · ${getCost(g.rank)}pt`}</span>
+    </div>`).join('');
     const errRows = errors.map(e => `<div style="font-family:DM Mono;font-size:0.65rem;color:#e57373;padding:3px 0;">${e}</div>`).join('');
     const dupeRows = dupes.length ? `<div style="font-family:DM Mono;font-size:0.65rem;color:#e5a050;margin-top:4px;">Duplicates skipped: ${dupes.join(', ')}</div>` : '';
-    preview.innerHTML = `
-      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Preview — ${parsed.length} golfer${parsed.length !== 1 ? 's' : ''}</div>
-      <div style="max-height:200px;overflow-y:auto;margin-bottom:6px;">${rows}</div>
-      ${errRows}${dupeRows}
-      ${parsed.length ? `<button class="action-btn" style="margin-top:10px;background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Confirm Import ${parsed.length} Golfers</button>` : ''}`;
+    preview.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:8px;">Preview — ${parsed.length} golfer${parsed.length!==1?'s':''}</div>
+      <div style="max-height:200px;overflow-y:auto;margin-bottom:6px;">${rows}</div>${errRows}${dupeRows}
+      ${parsed.length?`<button class="action-btn" style="margin-top:10px;background:rgba(201,168,76,0.2);" onclick="bulkImport(true)">Confirm Import ${parsed.length} Golfers</button>`:''}`;
   } else {
+    if (!state.golfers) state.golfers = [];
     let added = 0, skipped = 0;
     parsed.forEach(g => {
-      if (state.golfers[major].some(x => x.name.toLowerCase() === g.name.toLowerCase())) { skipped++; return; }
-      state.golfers[major].push({ name: g.name, rank: g.rank, amateur: g.amateur });
+      if (state.golfers.some(x => x.name.toLowerCase()===g.name.toLowerCase())) { skipped++; return; }
+      state.golfers.push({ name: g.name, rank: g.rank, amateur: g.amateur });
       added++;
     });
-    state.golfers[major].sort((a, b) => a.rank - b.rank);
-    saveState();
+    state.golfers.sort((a,b) => a.rank-b.rank);
+    showSyncIndicator('saving');
+    const ok = await fbSet('golfers', state.golfers);
+    hideSyncIndicator();
     renderRosterList();
     document.getElementById('bulk-import-text').value = '';
-    preview.innerHTML = `<div class="msg success">✓ Imported ${added} golfer${added !== 1 ? 's' : ''}${skipped ? ` · ${skipped} duplicate${skipped !== 1 ? 's' : ''} skipped` : ''}</div>`;
+    preview.innerHTML = `<div class="msg ${ok?'success':'error'}">${ok?`✓ Imported ${added} golfer${added!==1?'s':''}${skipped?` · ${skipped} skipped`:''}`:' Save failed'}</div>`;
     setTimeout(() => preview.innerHTML = '', 3000);
   }
 }
 
 function renderRosterList() {
-  const major = document.getElementById('roster-major-select').value;
   const list = document.getElementById('roster-list');
-  const golfers = state.golfers[major];
+  const golfers = state.golfers || [];
   const countEl = document.getElementById('roster-count');
   if (countEl) countEl.textContent = golfers.length;
   if (!golfers.length) { list.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;text-align:center;">No golfers in roster yet</div>'; return; }
-  list.innerHTML = golfers.map(g =>
-    `<div class="golfer-row" style="cursor:default;">
-      <div>
-        <div class="golfer-row-name">${g.name}${g.amateur ? '<span class="badge-amateur">amateur</span>' : ''}</div>
-        <div class="golfer-row-rank">${g.amateur ? 'Amateur pick' : `WGR #${g.rank} · ${getCost(g.rank)}pt`}</div>
-      </div>
-      <button class="remove-btn" onclick="removeGolfer('${major}','${g.name.replace(/'/g,"\\'")}')">✕</button>
-    </div>`
-  ).join('');
+  list.innerHTML = golfers.map(g => `<div class="golfer-row" style="cursor:default;">
+    <div><div class="golfer-row-name">${g.name}${g.amateur?'<span class="badge-amateur">amateur</span>':''}</div>
+    <div class="golfer-row-rank">${g.amateur?'Amateur pick':`WGR #${g.rank} · ${getCost(g.rank)}pt`}</div></div>
+    <button class="remove-btn" onclick="removeGolfer('${g.name.replace(/'/g,"\\'")}')">✕</button>
+  </div>`).join('');
 }
 
 // ══════════════════════════════════════════
-//  LIVE SCORE SYNC
+//  SCORE ENTRY
 // ══════════════════════════════════════════
-const WORKER_URL = 'https://golf-scores-proxy.basford-ryan38.workers.dev';
-
-function cleanName(name) {
-  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim();
-}
-
-function nameSimilarity(a, b) {
-  const ca = cleanName(a), cb = cleanName(b);
-  if (ca === cb) return 1;
-  const aParts = ca.split(' '), bParts = cb.split(' ');
-  const aLast = aParts[aParts.length - 1], bLast = bParts[bParts.length - 1];
-  if (aLast === bLast) return 0.9;
-  if (aParts[0] === bParts[0] && aLast === bLast) return 1;
-  if (ca.includes(cb) || cb.includes(ca)) return 0.8;
-  return 0;
-}
-
-function calcTotalScore(rounds) {
-  let total = 0;
-  for (const r of rounds) {
-    if (!r.score || r.score === '-' || r.score === '' || r.score === 'E') continue;
-    const n = parseInt(r.score);
-    if (!isNaN(n)) total += n;
-  }
-  return total;
-}
-
-async function syncLiveScores(major) {
-  const statusEl = document.getElementById(syncStatusTarget);
-  const unmatchedEl = document.getElementById('unmatched-container');
-
-  if (state.lockedMajors?.[major]) {
-    if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">⛔ ${MAJORS.find(m=>m.id===major)?.label} is locked — sync blocked.</span>`;
-    return;
-  }
-
-  if (statusEl) statusEl.innerHTML = '<span style="color:rgba(240,201,74,0.7);">⟳ Fetching live scores…</span>';
-  if (unmatchedEl) unmatchedEl.innerHTML = '';
-
-  try {
-    const res = await fetch(WORKER_URL);
-    const data = await res.json();
-    if (data.error) { if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ ${data.error}</span>`; return; }
-
-    const leaderboard = data.leaderboard || [];
-    const picks = state.picks[major] || {};
-    const pickedNames = new Set();
-    Object.values(picks).forEach(d => {
-      (d.golfers || []).forEach(g => pickedNames.add(g.name));
-      if (d.amateur) pickedNames.add(d.amateur.name);
-    });
-
-    let matched = 0, unmatched = [];
-    pickedNames.forEach(pickedName => {
-      let bestMatch = null, bestScore = 0;
-      leaderboard.forEach(player => {
-        const sim = nameSimilarity(pickedName, player.name);
-        if (sim > bestScore) { bestScore = sim; bestMatch = player; }
-      });
-      if (bestMatch && bestScore >= 0.8) {
-        state.scores[major][pickedName] = calcTotalScore(bestMatch.rounds);
-        const isCut = bestMatch.status === 'cut' ||
-          (bestMatch.rounds.length <= 2 && leaderboard.some(p => nameSimilarity(p.name, pickedName) >= 0.8 && p.rounds.length > 2));
-        Object.values(picks).forEach(d => {
-          const g = (d.golfers || []).find(x => x.name === pickedName);
-          if (g && isCut) g.cut = true;
-          if (d.amateur?.name === pickedName && isCut) d.amateur.cut = true;
-        });
-        matched++;
-      } else {
-        unmatched.push(pickedName);
-      }
-    });
-
-    isSyncing = true;
-    await saveState();
-    isSyncing = false;
-    renderScoreEntry();
-    renderLeaderboard();
-
-    if (statusEl) statusEl.innerHTML = `<span style="color:#4caf50;">✓ Synced ${matched} golfer${matched !== 1 ? 's' : ''} from ${data.tournament} → ${MAJORS.find(m=>m.id===major)?.label}</span>`;
-
-    if (unmatched.length && unmatchedEl) {
-      unmatchedEl.innerHTML = `
-        <div style="background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.25);border-radius:3px;padding:12px;margin-bottom:12px;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#e05444;margin-bottom:8px;letter-spacing:0.1em;text-transform:uppercase;">Could not match — enter manually:</div>
-          ${unmatched.map(n => `<div style="font-size:0.85rem;color:#f0f0f0;padding:2px 0;">• ${n}</div>`).join('')}
-        </div>`;
-    }
-  } catch(err) {
-    if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ Sync failed: ${err.message}</span>`;
-  }
-}
-
 function renderScoreEntry() {
-  const major = document.getElementById('score-major-select').value;
-  const golfers = state.golfers[major];
-  const scores = state.scores[major];
-  const worst = state.worstRounds[major];
-  const picks = state.picks[major];
+  const golfers = state.golfers || [];
+  const scores = state.scores || {};
+  const worst = state.worstRounds || {};
+  const picks = state.picks || {};
   const usedNames = new Set();
-  Object.values(picks || {}).forEach(d => {
-    (d.golfers || []).forEach(g => usedNames.add(g.name));
+  Object.values(picks).forEach(d => {
+    (d.golfers||[]).forEach(g => usedNames.add(g.name));
     if (d.amateur) usedNames.add(d.amateur.name);
   });
   const activeGolfers = golfers.filter(g => usedNames.has(g.name));
   const container = document.getElementById('score-entry-container');
-  if (!activeGolfers.length) { container.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No picks submitted for this major yet</div>'; return; }
+  if (!activeGolfers.length) { container.innerHTML = '<div style="font-family:DM Mono;font-size:0.7rem;color:rgba(201,168,76,0.3);padding:12px;">No picks submitted yet</div>'; return; }
   const cutMap = {};
-  Object.values(picks || {}).forEach(d => {
-    (d.golfers || []).forEach(g => { if (g.cut) cutMap[g.name] = true; });
-    if (d.amateur?.cut) cutMap[d.amateur.name] = true;
+  Object.values(picks).forEach(d => {
+    (d.golfers||[]).forEach(g => { if (g.cut) cutMap[g.name]=true; });
+    if (d.amateur?.cut) cutMap[d.amateur.name]=true;
   });
   container.innerHTML = `
     <div class="score-row" style="font-weight:500;">
@@ -1391,59 +1164,186 @@ function renderScoreEntry() {
     </div>
     ${activeGolfers.map(g => `
       <div class="score-row">
-        <div class="score-row-name">${g.name}${g.amateur ? '<span class="badge-amateur">am</span>' : ''}</div>
-        <input class="score-tiny" data-golfer="${g.name}" data-field="score" type="number" placeholder="E=0" value="${scores[g.name] ?? ''}">
-        <input type="checkbox" data-golfer="${g.name}" data-field="cut" ${cutMap[g.name] ? 'checked' : ''} style="accent-color:var(--red);width:18px;height:18px;cursor:pointer;">
-        <input class="score-tiny" data-field="sat" type="number" placeholder="0" value="${worst.sat ?? ''}" ${activeGolfers.indexOf(g) === 0 ? '' : 'style="visibility:hidden;"'}>
-        <input class="score-tiny" data-field="sun" type="number" placeholder="0" value="${worst.sun ?? ''}" ${activeGolfers.indexOf(g) === 0 ? '' : 'style="visibility:hidden;"'}>
+        <div class="score-row-name">${g.name}${g.amateur?'<span class="badge-amateur">am</span>':''}</div>
+        <input class="score-tiny" data-golfer="${g.name}" data-field="score" type="number" placeholder="E=0" value="${scores[g.name]??''}">
+        <input type="checkbox" data-golfer="${g.name}" data-field="cut" ${cutMap[g.name]?'checked':''} style="accent-color:var(--red);width:18px;height:18px;cursor:pointer;">
+        <input class="score-tiny" data-field="sat" type="number" placeholder="0" value="${worst.sat??''}" ${activeGolfers.indexOf(g)===0?'':'style="visibility:hidden;"'}>
+        <input class="score-tiny" data-field="sun" type="number" placeholder="0" value="${worst.sun??''}" ${activeGolfers.indexOf(g)===0?'':'style="visibility:hidden;"'}>
       </div>`).join('')}
-    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-top:8px;">Worst Sat/Sun rounds apply to all cut golfers. Enter once (top row).</div>`;
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(201,168,76,0.35);margin-top:8px;">Worst Sat/Sun apply to all cut golfers. Enter once (top row).</div>`;
 }
 
-function saveScores() {
-  const major = document.getElementById('score-major-select').value;
-  if (state.lockedMajors?.[major]) {
-    document.getElementById('score-msg').innerHTML = '<div class="msg error">⛔ This major is locked. Unlock it in the Lock Majors section to edit scores.</div>';
-    setTimeout(() => document.getElementById('score-msg').innerHTML = '', 3000);
+// ══════════════════════════════════════════
+//  LOCK
+// ══════════════════════════════════════════
+async function toggleLock() {
+  const newVal = !state.locked;
+  const msg = newVal ? 'Lock scores? No further edits or syncs allowed.' : 'Unlock scores? Edits will be allowed again.';
+  if (!confirm(msg)) return;
+  state.locked = newVal;
+  showSyncIndicator('saving');
+  await fbSet('locked', state.locked);
+  hideSyncIndicator();
+  renderLockStatus();
+}
+
+function renderLockStatus() {
+  const el = document.getElementById('lock-status');
+  const btn = document.getElementById('lock-btn');
+  if (state.locked) {
+    el.innerHTML = '<span style="color:#e05444;">⛔ Scores are locked</span>';
+    btn.textContent = 'Unlock Scores';
+    btn.classList.add('danger');
+  } else {
+    el.innerHTML = '<span style="color:#4caf50;">✓ Scores are editable</span>';
+    btn.textContent = 'Lock Scores';
+    btn.classList.remove('danger');
+  }
+}
+
+// ══════════════════════════════════════════
+//  LIVE SCORE SYNC
+// ══════════════════════════════════════════
+const WORKER_URL = 'https://golf-scores-proxy.basford-ryan38.workers.dev';
+
+function cleanName(name) {
+  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z\s]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function nameSimilarity(a, b) {
+  const ca = cleanName(a), cb = cleanName(b);
+  if (ca === cb) return 1;
+  const aL = ca.split(' ').pop(), bL = cb.split(' ').pop();
+  if (aL === bL) return 0.9;
+  if (ca.includes(cb) || cb.includes(ca)) return 0.8;
+  return 0;
+}
+
+function calcTotalScore(rounds) {
+  let total = 0;
+  for (const r of rounds) {
+    if (!r.score || r.score==='-' || r.score==='' || r.score==='E') continue;
+    const n = parseInt(r.score);
+    if (!isNaN(n)) total += n;
+  }
+  return total;
+}
+
+async function syncLiveScores() {
+  if (state.locked) {
+    const el = document.getElementById('lb-sync-status') || document.getElementById('sync-status');
+    if (el) el.innerHTML = '<span style="color:#e05444;">⛔ Scores are locked — sync blocked.</span>';
     return;
   }
-  const container = document.getElementById('score-entry-container');
-  container.querySelectorAll('[data-field="score"]').forEach(input => { state.scores[major][input.dataset.golfer] = input.value; });
-  const satInput = container.querySelector('[data-field="sat"]');
-  const sunInput = container.querySelector('[data-field="sun"]');
-  if (satInput) state.worstRounds[major].sat = satInput.value;
-  if (sunInput) state.worstRounds[major].sun = sunInput.value;
-  container.querySelectorAll('[data-field="cut"]').forEach(cb => {
-    const name = cb.dataset.golfer;
-    Object.values(state.picks[major] || {}).forEach(d => {
-      const g = (d.golfers || []).find(x => x.name === name);
-      if (g) g.cut = cb.checked;
-      if (d.amateur?.name === name) d.amateur.cut = cb.checked;
+
+  const statusEl = document.getElementById('lb-sync-status') || document.getElementById('sync-status');
+  const unmatchedEl = document.getElementById('unmatched-container');
+  if (statusEl) statusEl.innerHTML = '<span style="color:rgba(240,201,74,0.7);">⟳ Fetching live scores…</span>';
+  if (unmatchedEl) unmatchedEl.innerHTML = '';
+
+  try {
+    const res = await fetch(WORKER_URL);
+    const data = await res.json();
+    if (data.error) { if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ ${data.error}</span>`; return; }
+
+    const leaderboard = data.leaderboard || [];
+    const picks = state.picks || {};
+    const pickedNames = new Set();
+    Object.values(picks).forEach(d => {
+      (d.golfers||[]).forEach(g => pickedNames.add(g.name));
+      if (d.amateur) pickedNames.add(d.amateur.name);
     });
-  });
-  isSyncing = true;
-  saveState().then(() => { isSyncing = false; });
-  document.getElementById('score-msg').innerHTML = '<div class="msg success">Scores saved ✓</div>';
-  setTimeout(() => document.getElementById('score-msg').innerHTML = '', 2500);
+
+    const newScores = { ...(state.scores || {}) };
+    let matched = 0, unmatched = [];
+
+    pickedNames.forEach(pickedName => {
+      let bestMatch = null, bestScore = 0;
+      leaderboard.forEach(player => {
+        const sim = nameSimilarity(pickedName, player.name);
+        if (sim > bestScore) { bestScore = sim; bestMatch = player; }
+      });
+      if (bestMatch && bestScore >= 0.8) {
+        newScores[pickedName] = calcTotalScore(bestMatch.rounds);
+        const isCut = bestMatch.status === 'cut' ||
+          (bestMatch.rounds.length <= 2 && leaderboard.some(p => nameSimilarity(p.name,pickedName)>=0.8 && p.rounds.length>2));
+        Object.values(picks).forEach(d => {
+          const g = (d.golfers||[]).find(x => x.name===pickedName);
+          if (g && isCut) g.cut = true;
+          if (d.amateur?.name===pickedName && isCut) d.amateur.cut = true;
+        });
+        matched++;
+      } else { unmatched.push(pickedName); }
+    });
+
+    // Save scores and picks separately to Firebase
+    showSyncIndicator('saving');
+    const [ok1, ok2] = await Promise.all([
+      fbSet('scores', newScores),
+      fbSet('picks', picks)
+    ]);
+    hideSyncIndicator();
+
+    if (ok1) {
+      state.scores = newScores;
+    }
+
+    renderLeaderboard();
+    renderScoreEntry();
+
+    if (statusEl) statusEl.innerHTML = ok1
+      ? `<span style="color:#4caf50;">✓ Synced ${matched} golfer${matched!==1?'s':''} from ${data.tournament}</span>`
+      : `<span style="color:#e05444;">✗ Fetch succeeded but Firebase save failed</span>`;
+
+    if (unmatched.length && unmatchedEl) {
+      unmatchedEl.innerHTML = `<div style="background:rgba(224,84,68,0.08);border:1px solid rgba(224,84,68,0.25);border-radius:3px;padding:12px;margin-bottom:12px;">
+        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#e05444;margin-bottom:8px;letter-spacing:0.1em;text-transform:uppercase;">Could not match — enter manually:</div>
+        ${unmatched.map(n=>`<div style="font-size:0.85rem;color:#f0f0f0;padding:2px 0;">• ${n}</div>`).join('')}
+      </div>`;
+    }
+  } catch(err) {
+    if (statusEl) statusEl.innerHTML = `<span style="color:#e05444;">✗ Sync failed: ${err.message}</span>`;
+  }
 }
 
 // ══════════════════════════════════════════
 //  RESET
 // ══════════════════════════════════════════
-function resetMajor() {
-  const major = document.getElementById('reset-major-select').value;
-  if (!confirm(`Clear all picks and scores for ${MAJORS.find(m=>m.id===major).label}?`)) return;
-  state.picks[major] = {};
-  state.scores[major] = {};
-  state.worstRounds[major] = {};
-  saveState();
-  alert('Done.');
+async function resetTournament() {
+  if (!confirm('Reset current tournament? Picks, scores, and golfers will be cleared.')) return;
+  state.golfers = [];
+  state.picks = {};
+  state.scores = {};
+  state.worstRounds = { sat: '', sun: '' };
+  state.locked = false;
+  state.deadline = null;
+  showSyncIndicator('saving');
+  await Promise.all([
+    fbSet('golfers', state.golfers),
+    fbSet('picks', state.picks),
+    fbSet('scores', state.scores),
+    fbSet('worstRounds', state.worstRounds),
+    fbSet('locked', false),
+    fbSet('deadline', null)
+  ]);
+  hideSyncIndicator();
+  alert('Tournament reset.');
+  location.reload();
 }
 
-function resetAll() {
-  if (!confirm('Reset EVERYTHING? This cannot be undone.')) return;
-  state = defaultState();
-  saveState();
+async function resetAll() {
+  if (!confirm('Reset EVERYTHING including history? This cannot be undone.')) return;
+  await Promise.all([
+    fbSet('activeMajor', 'pga'),
+    fbSet('players', ['Ryan','Ross','Eddie','Sam','Nathan','Alex']),
+    fbSet('golfers', []),
+    fbSet('picks', {}),
+    fbSet('scores', {}),
+    fbSet('worstRounds', {sat:'',sun:''}),
+    fbSet('locked', false),
+    fbSet('deadline', null),
+    fbSet('history', [])
+  ]);
   alert('Reset complete.');
   location.reload();
 }
@@ -1453,10 +1353,8 @@ function resetAll() {
 // ══════════════════════════════════════════
 (async () => {
   await loadState();
-  buildMajorSelector('lb-major-selector', activeLbMajor, 'setLbMajor');
+  updateBadge();
   renderLeaderboard();
-  renderDeadlineRows();
-  startLiveSync();
 })();
 </script>
 
