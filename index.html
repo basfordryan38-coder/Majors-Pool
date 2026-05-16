@@ -230,6 +230,7 @@ nav { display: flex; justify-content: center; gap: 4px; padding: 20px 16px 0; fl
   <div class="leaderboard-major-selector" id="lb-major-selector"></div>
   <div style="margin-bottom:16px;">
     <button class="action-btn" style="background:rgba(240,201,74,0.2);border-color:rgba(240,201,74,0.5);" onclick="openSyncDialog('lb-sync-status')">⛳ Sync Live Scores</button>
+    <button class="action-btn" style="font-size:0.62rem;" onclick="alert(JSON.stringify(state.scores.pga))">🔍 Debug Scores</button>
     <div id="lb-sync-status" style="font-family:'DM Mono',monospace;font-size:0.68rem;margin-top:8px;"></div>
   </div>
   <div class="card" id="lb-container">
