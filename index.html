@@ -747,11 +747,29 @@ function startLiveSync() {
   fbListen('pool', (data) => {
     if (!data) return;
     const def = defaultState();
+
+    // Merge scores: keep any local score that is non-empty,
+    // only overwrite with incoming data if local is missing
+    const mergedScores = {};
+    ['masters', 'pga', 'usopen', 'open'].forEach(id => {
+      const incoming = (data.scores || {})[id] || {};
+      const local = (state.scores || {})[id] || {};
+      mergedScores[id] = {};
+      // Start with incoming
+      Object.assign(mergedScores[id], incoming);
+      // Overwrite with local where local has a real value
+      Object.entries(local).forEach(([name, val]) => {
+        if (val !== undefined && val !== null && val !== '') {
+          mergedScores[id][name] = val;
+        }
+      });
+    });
+
     state = {
       players: data.players || def.players,
       golfers: { ...def.golfers, ...(data.golfers || {}) },
       picks:   { ...def.picks,   ...(data.picks   || {}) },
-      scores:  { ...def.scores,  ...(data.scores  || {}) },
+      scores:  mergedScores,
       worstRounds: { ...def.worstRounds, ...(data.worstRounds || {}) },
       deadlines: data.deadlines || {},
       lockedMajors: data.lockedMajors || {},
