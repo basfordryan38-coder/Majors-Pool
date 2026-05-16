@@ -523,6 +523,7 @@ let pickPlayer = null;
 let selectedGolfers = [];
 let selectedAmateur = null;
 let syncStatusTarget = 'sync-status';
+let isSyncing = false;
 
 // ══════════════════════════════════════════
 //  SYNC DIALOG
@@ -746,6 +747,7 @@ function hideSyncIndicator() {
 
 function startLiveSync() {
   fbListen('pool', (data) => {
+    if (isSyncing) return;
     if (!data) return;
     const def = defaultState();
 
@@ -1340,7 +1342,9 @@ async function syncLiveScores(major) {
       }
     });
 
+    isSyncing = true;
     await saveState();
+    isSyncing = false;
     renderScoreEntry();
     renderLeaderboard();
 
@@ -1417,7 +1421,8 @@ function saveScores() {
       if (d.amateur?.name === name) d.amateur.cut = cb.checked;
     });
   });
-  saveState();
+  isSyncing = true;
+  saveState().then(() => { isSyncing = false; });
   document.getElementById('score-msg').innerHTML = '<div class="msg success">Scores saved ✓</div>';
   setTimeout(() => document.getElementById('score-msg').innerHTML = '', 2500);
 }
